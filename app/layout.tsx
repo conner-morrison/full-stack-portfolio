@@ -8,6 +8,8 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { PageTransition } from "@/components/page-transition";
 import { BackgroundGrid } from "@/components/background-grid";
+import { NoiseOverlay } from "@/components/noise-overlay";
+import { Spotlight } from "@/components/spotlight";
 
 export default function RootLayout({
   children,
@@ -21,6 +23,8 @@ export default function RootLayout({
       <body className="bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 transition-colors duration-300">
         <ThemeProvider attribute="class" defaultTheme="system">
           <BackgroundGrid />
+          <NoiseOverlay />
+          <Spotlight />
           <div className="min-h-screen flex flex-col">
             <Header onOpenCommand={() => setOpen(true)} />
             <main className="flex-1 max-w-4xl mx-auto px-6 py-16">

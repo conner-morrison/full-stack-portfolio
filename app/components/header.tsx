@@ -2,9 +2,17 @@
 
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 export function Header({ onOpenCommand }: { onOpenCommand: () => void }) {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isDark = theme === "dark";
 
   return (
     <header className="border-b border-neutral-200 dark:border-neutral-800">
@@ -19,11 +27,11 @@ export function Header({ onOpenCommand }: { onOpenCommand: () => void }) {
         <div className="flex items-center gap-6 text-neutral-600 dark:text-neutral-400">
           <button
             onClick={() =>
-              setTheme(theme === "dark" ? "light" : "dark")
+              setTheme(isDark ? "light" : "dark")
             }
             className="hover:opacity-80 transition-colors duration-200"
           >
-            {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+            {mounted ? (isDark ? <Sun size={16} /> : <Moon size={16} />) : null}
           </button>
 
           <button
