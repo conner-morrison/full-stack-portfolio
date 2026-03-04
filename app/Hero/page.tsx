@@ -1,9 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Parallax } from "@/components/parallax";
 
 export default function Hero() {
     return (
+      <Parallax speed={40}>
       <section className="relative min-h-screen flex items-center px-24">
   
         {/* Spotlight */}
@@ -40,5 +42,6 @@ export default function Hero() {
           </div>
         </div>
       </section>
+      </Parallax>
     );
 }
