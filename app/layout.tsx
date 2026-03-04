@@ -6,6 +6,7 @@ import { ReactNode, useState } from "react";
 import { CommandPalette } from "@/components/command-palette";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { PageTransition } from "@/components/page-transition";
 
 export default function RootLayout({
   children,
@@ -21,7 +22,7 @@ export default function RootLayout({
           <div className="min-h-screen flex flex-col">
             <Header onOpenCommand={() => setOpen(true)} />
             <main className="flex-1 max-w-4xl mx-auto px-6 py-16">
-              {children}
+              <PageTransition>{children}</PageTransition>
             </main>
             <Footer />
             <CommandPalette open={open} setOpen={setOpen} />
