@@ -1,8 +1,27 @@
 import { MotionWrapper } from "@/components/motion-wrapper";
+import { Spotlight } from "@/components/spotlight";
 
 export default function HomePage() {
     return (
       <MotionWrapper>
+        <section className="relative space-y-6 py-24">
+          <Spotlight />
+
+          <h1 className="text-4xl font-semibold tracking-tight">
+            Conner Morrison
+          </h1>
+
+          <p className="text-xl text-neutral-600 dark:text-neutral-400">
+            Engineering Manager & Software Architect
+          </p>
+
+          <p className="text-neutral-700 dark:text-neutral-300 max-w-2xl">
+            I build scalable systems and lead engineering teams.
+            10 years of experience across the U.S. and Japan in SaaS architecture,
+            production systems, and technical leadership.
+          </p>
+        </section>
+
       <div className="space-y-20">
         <section className="space-y-6">
           <h1 className="text-4xl font-semibold tracking-tight">

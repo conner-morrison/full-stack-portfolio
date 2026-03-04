@@ -21,7 +21,7 @@ export function Header({ onOpenCommand }: { onOpenCommand: () => void }) {
             onClick={() =>
               setTheme(theme === "dark" ? "light" : "dark")
             }
-            className="hover:opacity-70 transition"
+            className="hover:opacity-80 transition-colors duration-200"
           >
             {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
           </button>
