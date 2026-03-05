@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Parallax } from "@/components/parallax";
 
@@ -32,13 +33,20 @@ export default function Hero() {
           </p>
   
           <div className="flex gap-6">
-            <button className="px-6 py-3 bg-white text-black rounded-full text-sm">
-              View Work
-            </button>
-  
-            <button className="px-6 py-3 border border-neutral-700 rounded-full text-sm">
+            <Link
+              href="/about"
+              className="px-6 py-3 bg-white text-black rounded-full text-sm font-medium"
+            >
+              About Me
+            </Link>
+
+            <a
+              href="/Conner_Morrison_Resume.pdf"
+              download
+              className="px-6 py-3 border border-neutral-700 rounded-full text-sm inline-flex items-center justify-center"
+            >
               Download Resume
-            </button>
+            </a>
           </div>
         </div>
       </section>

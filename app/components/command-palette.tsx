@@ -47,14 +47,8 @@ export function CommandPalette({
           <Command.Item onSelect={() => navigate("/about")}>
             About
           </Command.Item>
-          <Command.Item onSelect={() => navigate("/architecture")}>
-            Architecture
-          </Command.Item>
           <Command.Item onSelect={() => navigate("/projects")}>
             Projects
-          </Command.Item>
-          <Command.Item onSelect={() => navigate("/leadership")}>
-            Leadership
           </Command.Item>
           <Command.Item onSelect={() => navigate("/contact")}>
             Contact
