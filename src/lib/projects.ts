@@ -28,6 +28,16 @@ export const projects: Project[] = [
     result:
       "Improved maintainability and reduced regression bugs.",
     image: "/projects/internal-ops.png",
+    githubUrl: "https://github.com/conner-morrison/internal-ops-tool",
+
+    tech: [
+      "Next.js 14",
+      "TypeScript",
+      "Node.js",
+      "PostgreSQL",
+      "Prisma",
+      "Tailwind CSS"
+    ],
   },
   {
     slug: "enterprise-payroll-api",
@@ -43,6 +53,16 @@ export const projects: Project[] = [
     result:
       "~40% performance improvement.",
     image: "/projects/payroll-api.png",
+    githubUrl: "https://github.com/conner-morrison/spring-enterprise-core",
+
+    tech: [
+      "Java",
+      "Spring Boot",
+      "Hibernate",
+      "PostgreSQL",
+      "Docker",
+      "AWS"
+    ],
   },
   {
     slug: "ci-automation-framework",
@@ -58,6 +78,15 @@ export const projects: Project[] = [
     result:
       "50% reduction in CI pipeline failures.",
     image: "/projects/ci-framework.png",
+    githubUrl: "https://github.com/conner-morrison/ci-automation-framework",
+
+    tech: [
+      "GitHub Actions",
+      "Docker",
+      "Terraform",
+      "Node.js",
+      "AWS"
+    ],
   },
   {
     slug: "b2b-workflow-saas",
@@ -73,6 +102,16 @@ export const projects: Project[] = [
     result:
       "Scaled to 10,000+ users.",
     image: "/projects/workflow-saas.png",
+    githubUrl: "https://github.com/conner-morrison/b2b-workflow-saas",
+
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "PostgreSQL",
+      "Redis",
+      "AWS"
+    ],
   },
   {
     slug: "crm-modernization",
@@ -88,6 +127,16 @@ export const projects: Project[] = [
     result:
       "40% improvement in development velocity.",
     image: "/projects/crm-modernization.png",
+    githubUrl: "https://github.com/conner-morrison/crm-modernization-platform",
+
+    tech: [
+      "Next.js",
+      "Node.js",
+      "GraphQL",
+      "PostgreSQL",
+      "Docker",
+      "AWS"
+    ],
   },
   {
     slug: "multi-tenant-saas-platform",
@@ -103,5 +152,15 @@ export const projects: Project[] = [
     result:
       "35% improved load time.",
     image: "/projects/multi-tenant-saas.png",
+    githubUrl: "https://github.com/conner-morrison/nextwave-saas-platform",
+
+    tech: [
+      "Next.js 14",
+      "TypeScript",
+      "Node.js",
+      "PostgreSQL",
+      "Redis",
+      "AWS"
+    ],
   },
 ];
