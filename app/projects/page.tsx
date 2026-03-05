@@ -7,126 +7,51 @@ import Link from "next/link";
 
 export default function ProjectsPage() {
   return (
-    <div className="max-w-6xl mx-auto px-8 py-24 space-y-24">
+    <div className="max-w-5xl mx-auto px-6 sm:px-8 py-16 sm:py-24 space-y-16">
+      <div>
+        <h1 className="font-serif text-4xl sm:text-5xl font-semibold tracking-tight text-[var(--foreground)]">
+          Projects
+        </h1>
+        <p className="mt-3 text-lg text-[var(--muted)]">
+          Selected work across enterprise SaaS, automation, and full-stack systems.
+        </p>
+      </div>
 
-      <h1 className="text-5xl font-bold tracking-tight">
-        Projects
-      </h1>
-
-      <div className="space-y-24">
-        {projects.map((project) => {
-          return (
+      <div className="space-y-12 sm:space-y-16">
+        {projects.map((project) => (
           <Link
             key={project.slug}
             href={`/projects/${project.slug}`}
             className="block group"
           >
-            <div className="
-              relative
-              rounded-3xl
-              overflow-hidden
-              border border-neutral-800
-              bg-neutral-950
-              transition-all duration-500
-              group-hover:border-neutral-500
-              group-hover:shadow-[0_0_40px_rgba(255,255,255,0.10)]
-            ">
-            {/* Animated Edge Highlight Sweep */}
-            <div
-              className="
-                pointer-events-none
-                absolute inset-0
-                opacity-0
-                group-hover:opacity-100
-                transition-opacity duration-500
-              "
+            <article
+              className="relative rounded-2xl overflow-hidden border border-[var(--card-border)] bg-[var(--card)] shadow-[var(--shadow)] transition-all duration-300 hover:shadow-[var(--shadow-lg)] hover:border-[var(--muted)]/50"
             >
-              <div
-                className="
-                  absolute
-                  -inset-1
-                  bg-gradient-to-r
-                  from-transparent
-                  via-white/15
-                  to-transparent
-                  translate-x-[-100%]
-                  group-hover:translate-x-[100%]
-                  transition-transform
-                  duration-1000
-                  ease-in-out
-                  blur-2xl
-                "
-              />
-            </div>
-              {/* LANDSCAPE IMAGE */}
-              <div className="relative w-full h-[420px] overflow-hidden">
-                {/* Reveal Mask */}
-                <motion.div
-                  initial={{ y: "0%" }}
-                  whileInView={{ y: "-100%" }}
-                  viewport={{ once: true, amount: 0.4 }}
-                  transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute inset-0 bg-neutral-950 z-20"
+              <div className="relative w-full h-72 sm:h-80 overflow-hidden">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover brightness-[0.97] transition duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 896px"
                 />
-
-                {/* Parallax + Zoom */}
-                <motion.div
-                  initial={{ scale: 1.1, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  viewport={{ once: true, amount: 0.4 }}
-                  transition={{ duration: 1.4, ease: "easeOut" }}
-                  className="relative w-full h-[120%]"
-                >
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover brightness-95 contrast-105"
-                  />
-                </motion.div>
-
-                  {/* Image Animation */}
-                  <motion.div
-                    initial={{ scale: 1.1, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 1 }}
-                    viewport={{ once: true, amount: 0.4 }}
-                    transition={{ duration: 1.4, ease: "easeOut" }}
-                    className="relative w-full h-full"
-                  >
-
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition duration-700"
-                  />
-
-                </motion.div>
-
-                {/* Subtle Transparency Mask */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-black/10 to-transparent pointer-events-none" />
-
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--card)]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               </div>
-
-              {/* TEXT SECTION */}
-              <div className="p-10 space-y-4">
-
-                <h2 className="text-3xl font-bold text-white tracking-tight">
+              <div className="p-6 sm:p-8 space-y-3">
+                <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-[var(--foreground)] tracking-tight">
                   {project.title}
                 </h2>
-
-                <p className="text-neutral-300 text-lg leading-relaxed max-w-3xl">
+                <p className="text-[var(--muted)] leading-relaxed max-w-2xl">
                   {project.overview}
                 </p>
-
+                <span className="inline-block text-sm font-medium text-[var(--accent)] group-hover:underline">
+                  View project →
+                </span>
               </div>
-
-            </div>
+            </article>
           </Link>
-        );
-        })}
+        ))}
       </div>
-      <div className="absolute inset-0 rounded-3xl ring-1 ring-white/5 pointer-events-none group-hover:ring-white/10 transition duration-500" />
     </div>
   );
 }

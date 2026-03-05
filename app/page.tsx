@@ -3,9 +3,9 @@ import ContactSection from "./contact/page";
 
 export default function HomePage() {
   return (
-    <div className="bg-neutral-950 text-neutral-100">
+    <div className="min-h-screen">
       <Hero />
-      <ContactSection />
+      <ContactSection variant="section" />
     </div>
   );
 }

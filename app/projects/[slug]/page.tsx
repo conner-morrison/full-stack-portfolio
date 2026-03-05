@@ -15,70 +15,65 @@ export default async function ProjectDetail({
   if (!project) return notFound();
 
   return (
-    <div className="max-w-5xl mx-auto px-8 py-24 space-y-20">
-
-      {/* HEADER */}
+    <div className="max-w-5xl mx-auto px-6 sm:px-8 py-16 sm:py-24 space-y-16">
       <Reveal>
-        <div className="space-y-6">
-          <h1 className="text-5xl font-bold tracking-tight text-white">
+        <div className="space-y-4">
+          <h1 className="font-serif text-4xl sm:text-5xl font-semibold tracking-tight text-[var(--foreground)]">
             {project.title}
           </h1>
-
-          <p className="text-xl text-neutral-400 leading-relaxed">
+          <p className="text-lg text-[var(--muted)] leading-relaxed">
             {project.overview}
           </p>
         </div>
       </Reveal>
 
-      {/* Links */}
-      <div className="flex gap-6 pt-4">
+      <div className="flex flex-wrap gap-4">
         {project.githubUrl && (
           <Link
             href={project.githubUrl}
             target="_blank"
-            className="px-6 py-3 rounded-xl bg-neutral-800 hover:bg-neutral-700 transition"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-[var(--accent)] text-white text-sm font-medium hover:opacity-90 transition-opacity"
           >
             View on GitHub
           </Link>
         )}
-
         {project.liveUrl && (
           <Link
             href={project.liveUrl}
             target="_blank"
-            className="px-6 py-3 rounded-xl border border-neutral-700 hover:border-neutral-500 transition"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center px-5 py-2.5 rounded-xl border-2 border-[var(--border)] bg-[var(--card)] text-[var(--foreground)] text-sm font-medium hover:bg-[var(--muted-bg)] transition-colors"
           >
             Live Demo
           </Link>
         )}
       </div>
 
-      {/* HERO IMAGE */}
       <Reveal>
-        <div className="relative w-full h-[520px] rounded-3xl overflow-hidden">
+        <div className="relative w-full aspect-video sm:h-[420px] rounded-2xl overflow-hidden border border-[var(--card-border)] shadow-[var(--shadow-lg)]">
           <Image
             src={project.image}
             alt={project.title}
             fill
             className="object-cover"
+            priority
+            sizes="(max-width: 768px) 100vw, 896px"
           />
         </div>
       </Reveal>
 
-      {/* DETAILS SECTION */}
-      <div className="space-y-16 text-neutral-300 text-lg leading-relaxed">
-
-        {/* Tech Stack */}
+      <div className="space-y-14 text-lg leading-relaxed">
         {project.tech && project.tech.length > 0 && (
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-6">
+            <h2 className="font-serif text-xl font-semibold text-[var(--foreground)] mb-4">
               Technology Stack
             </h2>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2">
               {project.tech.map((tech) => (
                 <span
                   key={tech}
-                  className="px-4 py-2 rounded-full bg-neutral-800 text-sm"
+                  className="px-3 py-1.5 rounded-lg bg-[var(--muted-bg)] text-[var(--muted)] text-sm font-medium border border-[var(--border)]"
                 >
                   {tech}
                 </span>
@@ -87,31 +82,25 @@ export default async function ProjectDetail({
           </section>
         )}
 
-        {["role", "challenge", "solution", "result"].map(
-          (sectionKey, index) => {
-            const content =
-              project[sectionKey as keyof typeof project];
-
+        {(["role", "challenge", "solution", "result"] as const).map(
+          (sectionKey) => {
+            const content = project[sectionKey];
             if (!content) return null;
-
             return (
               <Reveal key={sectionKey}>
-                <section className="space-y-6 mt-16">
-                  <h2 className="text-2xl font-semibold text-white capitalize">
+                <section className="space-y-3">
+                  <h2 className="font-serif text-xl font-semibold text-[var(--foreground)] capitalize">
                     {sectionKey}
                   </h2>
-
-                  <p className="text-neutral-300 leading-relaxed text-lg">
-                    {content as string}
+                  <p className="text-[var(--muted)] leading-relaxed">
+                    {content}
                   </p>
                 </section>
               </Reveal>
             );
           }
         )}
-
       </div>
-
     </div>
   );
 }

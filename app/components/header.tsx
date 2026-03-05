@@ -25,9 +25,15 @@ export function Header({ onOpenCommand }: { onOpenCommand: () => void }) {
   const isDark = theme === "dark";
 
   return (
-    <header className="border-b border-neutral-200 dark:border-neutral-800">
-      <div className="max-w-4xl mx-auto px-6 py-6 flex justify-between items-center text-sm">
-        <nav className="flex gap-1" role="tablist">
+    <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--background)]/95 backdrop-blur-sm">
+      <div className="max-w-5xl mx-auto px-6 sm:px-8 py-4 flex justify-between items-center">
+        <Link
+          href="/"
+          className="font-serif text-lg font-semibold text-[var(--foreground)] tracking-tight hover:opacity-80 transition-opacity"
+        >
+          Conner Morrison
+        </Link>
+        <nav className="flex items-center gap-1" role="navigation">
           {navItems.map(({ href, label }) => {
             const isActive =
               href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -35,12 +41,10 @@ export function Header({ onOpenCommand }: { onOpenCommand: () => void }) {
               <Link
                 key={href}
                 href={href}
-                role="tab"
-                aria-selected={isActive}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
                   isActive
-                    ? "bg-neutral-200 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100"
-                    : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-800/50"
+                    ? "bg-[var(--accent-soft)] text-[var(--accent)] dark:bg-[var(--accent-soft)] dark:text-[var(--accent)]"
+                    : "text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--muted-bg)]"
                 }`}
               >
                 {label}
@@ -48,14 +52,13 @@ export function Header({ onOpenCommand }: { onOpenCommand: () => void }) {
             );
           })}
         </nav>
-
-        <div className="flex items-center gap-4 text-neutral-600 dark:text-neutral-400">
+        <div className="flex items-center gap-2 text-[var(--muted)]">
           <button
             onClick={() => setTheme(isDark ? "light" : "dark")}
-            className="hover:opacity-80 transition-colors duration-200"
+            className="p-2 rounded-lg hover:bg-[var(--muted-bg)] hover:text-[var(--foreground)] transition-colors duration-200"
             aria-label="Toggle theme"
           >
-            {mounted ? (isDark ? <Sun size={16} /> : <Moon size={16} />) : null}
+            {mounted ? (isDark ? <Sun size={18} /> : <Moon size={18} />) : null}
           </button>
         </div>
       </div>
