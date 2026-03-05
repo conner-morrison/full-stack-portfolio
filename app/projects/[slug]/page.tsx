@@ -2,6 +2,7 @@ import { projects } from "@/lib/projects";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import { Reveal } from "@/components/reveal";
 
 export default async function ProjectDetail({
   params,
@@ -17,48 +18,52 @@ export default async function ProjectDetail({
     <div className="max-w-5xl mx-auto px-8 py-24 space-y-20">
 
       {/* HEADER */}
-      <div className="space-y-6">
-        <h1 className="text-5xl font-bold tracking-tight text-white">
-          {project.title}
-        </h1>
+      <Reveal>
+        <div className="space-y-6">
+          <h1 className="text-5xl font-bold tracking-tight text-white">
+            {project.title}
+          </h1>
 
-        <p className="text-xl text-neutral-400 leading-relaxed">
-          {project.overview}
-        </p>
-
-        {/* Links */}
-        <div className="flex gap-6 pt-4">
-          {project.githubUrl && (
-            <Link
-              href={project.githubUrl}
-              target="_blank"
-              className="px-6 py-3 rounded-xl bg-neutral-800 hover:bg-neutral-700 transition"
-            >
-              View on GitHub
-            </Link>
-          )}
-
-          {project.liveUrl && (
-            <Link
-              href={project.liveUrl}
-              target="_blank"
-              className="px-6 py-3 rounded-xl border border-neutral-700 hover:border-neutral-500 transition"
-            >
-              Live Demo
-            </Link>
-          )}
+          <p className="text-xl text-neutral-400 leading-relaxed">
+            {project.overview}
+          </p>
         </div>
+      </Reveal>
+
+      {/* Links */}
+      <div className="flex gap-6 pt-4">
+        {project.githubUrl && (
+          <Link
+            href={project.githubUrl}
+            target="_blank"
+            className="px-6 py-3 rounded-xl bg-neutral-800 hover:bg-neutral-700 transition"
+          >
+            View on GitHub
+          </Link>
+        )}
+
+        {project.liveUrl && (
+          <Link
+            href={project.liveUrl}
+            target="_blank"
+            className="px-6 py-3 rounded-xl border border-neutral-700 hover:border-neutral-500 transition"
+          >
+            Live Demo
+          </Link>
+        )}
       </div>
 
       {/* HERO IMAGE */}
-      <div className="relative w-full h-[520px] rounded-3xl overflow-hidden">
-        <Image
-          src={project.image}
-          alt={project.title}
-          fill
-          className="object-cover"
-        />
-      </div>
+      <Reveal>
+        <div className="relative w-full h-[520px] rounded-3xl overflow-hidden">
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-cover"
+          />
+        </div>
+      </Reveal>
 
       {/* DETAILS SECTION */}
       <div className="space-y-16 text-neutral-300 text-lg leading-relaxed">
@@ -82,37 +87,28 @@ export default async function ProjectDetail({
           </section>
         )}
 
-        {/* Role */}
-        <section>
-          <h2 className="text-2xl font-semibold text-white mb-6">
-            My Role
-          </h2>
-          <p>{project.role}</p>
-        </section>
+        {["role", "challenge", "solution", "result"].map(
+          (sectionKey, index) => {
+            const content =
+              project[sectionKey as keyof typeof project];
 
-        {/* Challenge */}
-        <section>
-          <h2 className="text-2xl font-semibold text-white mb-6">
-            Challenge
-          </h2>
-          <p>{project.challenge}</p>
-        </section>
+            if (!content) return null;
 
-        {/* Solution */}
-        <section>
-          <h2 className="text-2xl font-semibold text-white mb-6">
-            Solution
-          </h2>
-          <p>{project.solution}</p>
-        </section>
+            return (
+              <Reveal key={sectionKey}>
+                <section className="space-y-6 mt-16">
+                  <h2 className="text-2xl font-semibold text-white capitalize">
+                    {sectionKey}
+                  </h2>
 
-        {/* Result */}
-        <section>
-          <h2 className="text-2xl font-semibold text-white mb-6">
-            Result
-          </h2>
-          <p>{project.result}</p>
-        </section>
+                  <p className="text-neutral-300 leading-relaxed text-lg">
+                    {content as string}
+                  </p>
+                </section>
+              </Reveal>
+            );
+          }
+        )}
 
       </div>
 
