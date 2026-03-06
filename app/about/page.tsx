@@ -20,7 +20,7 @@ export default function AboutPage() {
             SaaS systems.
           </p>
         </div>
-        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-[var(--card-border)] shadow-[var(--shadow-lg)] order-1 md:order-2">
+        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-[var(--card-border)] ring-1 ring-black/10 dark:ring-white/10 order-1 md:order-2 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.12),0_10px_20px_-5px_rgba(0,0,0,0.15),0_30px_60px_-15px_rgba(0,0,0,0.35)] dark:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.3),0_10px_20px_-5px_rgba(0,0,0,0.4),0_30px_60px_-15px_rgba(0,0,0,0.6)]">
           <Image
             src={ABOUT_IMAGE_LIGHT}
             alt="Professional workspace"
