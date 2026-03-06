@@ -51,7 +51,6 @@ const lineWipe = {
 };
 
 export default function Hero() {
-  const { resolvedTheme } = useTheme();
   const [taglineLength, setTaglineLength] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
@@ -75,13 +74,21 @@ export default function Hero() {
   return (
     <Parallax speed={30}>
       <section className="relative min-h-[88vh] flex items-center justify-center overflow-hidden rounded-b-3xl">
-        {/* Background image - theme-aware */}
+        {/* Background image - theme-aware via CSS so correct image shows before hydration */}
         <div className="absolute inset-0 -z-10">
           <Image
-            src={resolvedTheme === "dark" ? HERO_DARK : HERO_LIGHT}
+            src={HERO_LIGHT}
             alt=""
             fill
-            className="object-cover"
+            className="object-cover dark:opacity-0 dark:pointer-events-none"
+            priority
+            sizes="100vw"
+          />
+          <Image
+            src={HERO_DARK}
+            alt=""
+            fill
+            className="object-cover opacity-0 dark:opacity-100 dark:pointer-events-auto"
             priority
             sizes="100vw"
           />

@@ -88,7 +88,7 @@ body {
   );
   background-size: 100% 120%;
   background-position: 50% 0%;
-  animation: bg-drift-light 28s ease-in-out infinite alternate;
+  animation: bg-drift-light 18s ease-in-out infinite alternate;
 }
 
 @keyframes bg-drift-light {
@@ -109,7 +109,7 @@ body {
     );
     background-size: 100% 120%;
     background-position: 50% 0%;
-    animation: bg-drift-dark 32s ease-in-out infinite alternate;
+    animation: bg-drift-dark 22s ease-in-out infinite alternate;
   }
 }
 
@@ -131,7 +131,7 @@ html.dark body {
   );
   background-size: 100% 120%;
   background-position: 50% 0%;
-  animation: bg-drift-dark 32s ease-in-out infinite alternate;
+  animation: bg-drift-dark 22s ease-in-out infinite alternate;
 }
 
 .font-serif {

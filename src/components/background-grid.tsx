@@ -22,7 +22,7 @@ export function BackgroundGrid() {
         initial={{ backgroundPosition: "50% 0%" }}
         animate={{ backgroundPosition: "50% 60px" }}
         transition={{
-          duration: 22,
+          duration: 14,
           repeat: Infinity,
           ease: [0.4, 0, 0.6, 1],
         }}
