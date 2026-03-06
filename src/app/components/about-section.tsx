@@ -20,20 +20,20 @@ export function AboutSection() {
           scalable cloud platforms, enterprise architecture, and high-performance
           SaaS systems.
         </p>
-        <div className="relative shrink-0 w-full max-w-[200px] sm:max-w-none sm:w-52 md:w-60 lg:w-72 xl:w-80 aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden border border-[var(--card-border)] ring-1 ring-black/10 dark:ring-white/10 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.12),0_10px_20px_-5px_rgba(0,0,0,0.15)] dark:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.3),0_10px_20px_-5px_rgba(0,0,0,0.4)]">
+        <div className="relative shrink-0 w-full max-w-[240px] sm:max-w-none sm:w-60 md:w-72 lg:w-80 xl:w-96 aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden border border-[var(--card-border)] ring-1 ring-black/10 dark:ring-white/10 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.12),0_10px_20px_-5px_rgba(0,0,0,0.15)] dark:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.3),0_10px_20px_-5px_rgba(0,0,0,0.4)]">
           <Image
             src={ABOUT_IMAGE_LIGHT}
             alt="Professional workspace"
             fill
             className="object-cover dark:hidden"
-            sizes="(max-width: 640px) 200px, (max-width: 768px) 208px, (max-width: 1024px) 240px, (max-width: 1280px) 288px, 320px"
+            sizes="(max-width: 640px) 240px, (max-width: 768px) 240px, (max-width: 1024px) 288px, (max-width: 1280px) 320px, 384px"
           />
           <Image
             src={ABOUT_IMAGE_DARK}
             alt="Professional workspace"
             fill
             className="object-cover hidden dark:block"
-            sizes="(max-width: 640px) 200px, (max-width: 768px) 208px, (max-width: 1024px) 240px, (max-width: 1280px) 288px, 320px"
+            sizes="(max-width: 640px) 240px, (max-width: 768px) 240px, (max-width: 1024px) 288px, (max-width: 1280px) 320px, 384px"
           />
         </div>
       </div>
