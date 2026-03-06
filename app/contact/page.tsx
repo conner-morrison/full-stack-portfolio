@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Mail, Phone, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const SHORELINE_IMAGES = [
   "/shoreline/Richmond Beach Shoreline Washington Waterfront Housing Aerial.jpg",
@@ -20,9 +20,19 @@ type ContactSectionProps = { variant?: "page" | "section" };
 export default function ContactPage({ variant = "page" }: ContactSectionProps) {
   const isSection = variant === "section";
   const [shorelineIndex, setShorelineIndex] = useState(0);
+  const [shorelineDirection, setShorelineDirection] = useState(0);
   const SHORELINE_WINDOW = 3;
   const maxShorelineStart = Math.max(0, SHORELINE_IMAGES.length - SHORELINE_WINDOW);
   const visibleShoreline = SHORELINE_IMAGES.slice(shorelineIndex, shorelineIndex + SHORELINE_WINDOW);
+
+  const goPrev = () => {
+    setShorelineDirection(-1);
+    setShorelineIndex((i) => Math.max(0, i - 1));
+  };
+  const goNext = () => {
+    setShorelineDirection(1);
+    setShorelineIndex((i) => Math.min(maxShorelineStart, i + 1));
+  };
   return (
     <section
       id={isSection ? "contact" : undefined}
@@ -155,32 +165,50 @@ export default function ContactPage({ variant = "page" }: ContactSectionProps) {
         <p className="px-6 py-3 text-sm font-medium text-[var(--muted)] bg-[var(--muted-bg)] border-b border-[var(--border)]">
           View around Washington State
         </p>
-        <div className="relative flex items-center bg-[var(--border)]">
+        <div className="relative flex items-center bg-[var(--border)] overflow-hidden">
           <button
             type="button"
-            onClick={() => setShorelineIndex((i) => Math.max(0, i - 1))}
+            onClick={goPrev}
             disabled={shorelineIndex === 0}
             className="absolute left-2 top-1/2 z-10 -translate-y-1/2 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-[var(--border)] bg-[var(--card)] text-[var(--foreground)] shadow-[var(--shadow)] hover:bg-[var(--muted-bg)] hover:border-[var(--accent)]/50 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] disabled:opacity-40 disabled:pointer-events-none"
             aria-label="Previous"
           >
             <ChevronLeft size={24} strokeWidth={2} />
           </button>
-          <div className="grid grid-cols-3 gap-px w-full min-h-0">
-            {visibleShoreline.map((src, i) => (
-              <div key={`${shorelineIndex}-${i}`} className="relative aspect-[4/3] bg-[var(--muted-bg)]">
-                <Image
-                  src={src}
-                  alt=""
-                  fill
-                  className="object-cover"
-                  sizes="33vw"
-                />
-              </div>
-            ))}
+          <div className="grid grid-cols-3 gap-px w-full min-h-0 relative">
+            <AnimatePresence mode="wait" initial={false} custom={shorelineDirection}>
+              <motion.div
+                key={shorelineIndex}
+                custom={shorelineDirection}
+                initial={(dir) => ({
+                  opacity: 0,
+                  x: typeof dir === "number" && dir !== 0 ? (dir > 0 ? -24 : 24) : 0,
+                })}
+                animate={{ opacity: 1, x: 0 }}
+                exit={(dir) => ({
+                  opacity: 0,
+                  x: typeof dir === "number" && dir !== 0 ? (dir > 0 ? 24 : -24) : 0,
+                })}
+                transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                className="col-span-3 grid grid-cols-3 gap-px w-full"
+              >
+                {visibleShoreline.map((src, i) => (
+                  <div key={`${shorelineIndex}-${i}`} className="relative aspect-[4/3] bg-[var(--muted-bg)] overflow-hidden">
+                    <Image
+                      src={src}
+                      alt=""
+                      fill
+                      className="object-cover"
+                      sizes="33vw"
+                    />
+                  </div>
+                ))}
+              </motion.div>
+            </AnimatePresence>
           </div>
           <button
             type="button"
-            onClick={() => setShorelineIndex((i) => Math.min(maxShorelineStart, i + 1))}
+            onClick={goNext}
             disabled={shorelineIndex >= maxShorelineStart}
             className="absolute right-2 top-1/2 z-10 -translate-y-1/2 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-[var(--border)] bg-[var(--card)] text-[var(--foreground)] shadow-[var(--shadow)] hover:bg-[var(--muted-bg)] hover:border-[var(--accent)]/50 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] disabled:opacity-40 disabled:pointer-events-none"
             aria-label="Next"
