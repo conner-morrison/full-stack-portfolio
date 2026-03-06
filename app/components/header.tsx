@@ -7,20 +7,53 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 const navItems = [
-  { href: "/", label: "Home" },
-  { href: "/#about", label: "About" },
-  { href: "/#projects", label: "Projects" },
-  { href: "/#contact", label: "Contact" },
+  { href: "/", label: "Home", section: null as string | null },
+  { href: "/#about", label: "About", section: "about" },
+  { href: "/#projects", label: "Projects", section: "projects" },
+  { href: "/#contact", label: "Contact", section: "contact" },
 ];
 
 export function Header({ onOpenCommand }: { onOpenCommand: () => void }) {
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Scroll-spy: update active nav item based on which section is in view (home page only)
+  useEffect(() => {
+    if (pathname !== "/") return;
+
+    const updateActive = () => {
+      const sectionIds = ["about", "projects", "contact"];
+      const elements = sectionIds.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+      if (window.scrollY < 150) {
+        setActiveSection(null);
+        return;
+      }
+      if (elements.length === 0) return;
+      let current: string | null = null;
+      let minTop = Infinity;
+      for (const el of elements) {
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= window.innerHeight * 0.4 && rect.top > -rect.height * 0.5) {
+          if (rect.top < minTop) {
+            minTop = rect.top;
+            current = el.id;
+          }
+        }
+      }
+      setActiveSection(current);
+    };
+
+    const onScroll = () => requestAnimationFrame(updateActive);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    updateActive();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [pathname]);
 
   const isDark = theme === "dark";
 
@@ -40,13 +73,15 @@ export function Header({ onOpenCommand }: { onOpenCommand: () => void }) {
           Conner Morrison
         </Link>
         <nav className="flex items-center gap-0.5 sm:gap-1 flex-shrink-0" role="navigation">
-          {navItems.map(({ href, label }) => {
+          {navItems.map(({ href, label, section }) => {
             const isActive =
-              href === "/"
-                ? pathname === "/"
-                : href.startsWith("/#")
+              pathname !== "/"
+                ? href === "/"
                   ? false
-                  : pathname.startsWith(href);
+                  : pathname.startsWith("/" + (section ?? ""))
+                : section === null
+                  ? activeSection === null
+                  : activeSection === section;
             return (
               <Link
                 key={href}

@@ -231,8 +231,8 @@ export function AboutSection() {
                 Thesis: Scalable Web Application Architecture for Distributed Systems
               </p>
             </div>
-            <div className="w-full sm:w-56 md:w-64 lg:w-72 shrink-0 min-h-[180px] sm:min-h-0 bg-[var(--muted-bg)]/50 flex items-center justify-center p-4 sm:p-6 border-t sm:border-t-0 sm:border-l border-[var(--border)]">
-              <div className="relative w-full h-full min-h-[140px] sm:min-h-[180px]">
+            <div className="w-full sm:w-56 md:w-64 lg:w-72 shrink-0 h-[200px] sm:h-[220px] bg-[var(--muted-bg)]/50 flex items-center justify-center p-4 sm:p-6 border-t sm:border-t-0 sm:border-l border-[var(--border)]">
+              <div className="relative w-full h-full">
                 <Image
                   src="/conner/Caluni.png"
                   alt="University of California, Irvine"
@@ -260,8 +260,8 @@ export function AboutSection() {
                 structures, and modern application development.
               </p>
             </div>
-            <div className="w-full sm:w-56 md:w-64 lg:w-72 shrink-0 min-h-[180px] sm:min-h-0 bg-[var(--muted-bg)]/50 flex items-center justify-center p-4 sm:p-6 border-t sm:border-t-0 sm:border-l border-[var(--border)]">
-              <div className="relative w-full h-full min-h-[140px] sm:min-h-[180px]">
+            <div className="w-full sm:w-56 md:w-64 lg:w-72 shrink-0 h-[200px] sm:h-[220px] bg-[var(--muted-bg)]/50 flex items-center justify-center p-4 sm:p-6 border-t sm:border-t-0 sm:border-l border-[var(--border)]">
+              <div className="relative w-full h-full">
                 <Image
                   src="/conner/Washuni.png"
                   alt="University of Washington"
