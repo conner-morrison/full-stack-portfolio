@@ -217,31 +217,60 @@ export function AboutSection() {
           Education
         </h3>
         <div className="space-y-6">
-          <div className="p-6 sm:p-8 rounded-2xl border border-[var(--card-border)] bg-[var(--card)] shadow-[var(--shadow)]">
-            <h4 className="font-semibold text-[var(--foreground)]">
-              Master of Science (M.S.) in Computer Science
-            </h4>
-            <p className="mt-1 text-[var(--muted)]">
-              University of California, Irvine · 2014 – 2016
-            </p>
-            <p className="mt-2 text-[var(--muted)]">GPA: 3.8</p>
-            <p className="mt-2 text-sm text-[var(--muted)] italic">
-              Thesis: Scalable Web Application Architecture for Distributed Systems
-            </p>
+          {/* UC Irvine — card with large logo at end */}
+          <div className="flex flex-col sm:flex-row rounded-2xl border border-[var(--card-border)] bg-[var(--card)] shadow-[var(--shadow)] overflow-hidden">
+            <div className="flex-1 min-w-0 p-6 sm:p-8 flex flex-col justify-center">
+              <h4 className="font-semibold text-[var(--foreground)]">
+                Master of Science (M.S.) in Computer Science
+              </h4>
+              <p className="mt-1 text-[var(--muted)]">
+                University of California, Irvine · 2014 – 2016
+              </p>
+              <p className="mt-2 text-[var(--muted)]">GPA: 3.8</p>
+              <p className="mt-2 text-sm text-[var(--muted)] italic">
+                Thesis: Scalable Web Application Architecture for Distributed Systems
+              </p>
+            </div>
+            <div className="w-full sm:w-56 md:w-64 lg:w-72 shrink-0 min-h-[180px] sm:min-h-0 bg-[var(--muted-bg)]/50 flex items-center justify-center p-4 sm:p-6 border-t sm:border-t-0 sm:border-l border-[var(--border)]">
+              <div className="relative w-full h-full min-h-[140px] sm:min-h-[180px]">
+                <Image
+                  src="/conner/Caluni.png"
+                  alt="University of California, Irvine"
+                  fill
+                  className="object-contain drop-shadow-md"
+                  sizes="(max-width: 640px) 100vw, 288px"
+                />
+              </div>
+            </div>
           </div>
-          <div className="p-6 sm:p-8 rounded-2xl border border-[var(--card-border)] bg-[var(--card)] shadow-[var(--shadow)]">
-            <h4 className="font-semibold text-[var(--foreground)]">
-              Bachelor of Science (B.S.) in Computer Science
-            </h4>
-            <p className="mt-1 text-[var(--muted)]">
-              University of Washington · 2010 – 2014
-            </p>
-            <p className="mt-2 text-[var(--muted)]">GPA: 3.6</p>
-            <p className="mt-2 text-sm text-[var(--muted)] opacity-90">
-              Focus: Software Engineering, Distributed Systems, Algorithms, and
-              Computer Architecture. Emphasis on scalable system design, data
-              structures, and modern application development.
-            </p>
+
+          {/* University of Washington — card with large logo at end */}
+          <div className="flex flex-col sm:flex-row rounded-2xl border border-[var(--card-border)] bg-[var(--card)] shadow-[var(--shadow)] overflow-hidden">
+            <div className="flex-1 min-w-0 p-6 sm:p-8 flex flex-col justify-center">
+              <h4 className="font-semibold text-[var(--foreground)]">
+                Bachelor of Science (B.S.) in Computer Science
+              </h4>
+              <p className="mt-1 text-[var(--muted)]">
+                University of Washington · 2010 – 2014
+              </p>
+              <p className="mt-2 text-[var(--muted)]">GPA: 3.6</p>
+              <p className="mt-2 text-sm text-[var(--muted)] opacity-90">
+                Focus: Software Engineering, Distributed Systems, Algorithms, and
+                Computer Architecture. Emphasis on scalable system design, data
+                structures, and modern application development.
+              </p>
+            </div>
+            <div className="w-full sm:w-56 md:w-64 lg:w-72 shrink-0 min-h-[180px] sm:min-h-0 bg-[var(--muted-bg)]/50 flex items-center justify-center p-4 sm:p-6 border-t sm:border-t-0 sm:border-l border-[var(--border)]">
+              <div className="relative w-full h-full min-h-[140px] sm:min-h-[180px]">
+                <Image
+                  src="/conner/Washuni.png"
+                  alt="University of Washington"
+                  fill
+                  className="object-contain drop-shadow-md"
+                  sizes="(max-width: 640px) 100vw, 288px"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
