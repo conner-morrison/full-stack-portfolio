@@ -28,7 +28,7 @@ export const projects: Project[] = [
     result:
       "Improved maintainability and reduced regression bugs.",
     image: "/projects/internal-ops.png",
-    githubUrl: "https://github.com/conner-morrison/internal-ops-tool",
+    githubUrl: "https://github.com/conner-morrison/AdminLTE.git",
 
     tech: [
       "Next.js 14",
@@ -53,7 +53,7 @@ export const projects: Project[] = [
     result:
       "~40% performance improvement.",
     image: "/projects/payroll-api.png",
-    githubUrl: "https://github.com/conner-morrison/spring-enterprise-core",
+    githubUrl: "https://github.com/conner-morrison/spring-petclinic.git",
 
     tech: [
       "Java",
@@ -78,7 +78,7 @@ export const projects: Project[] = [
     result:
       "50% reduction in CI pipeline failures.",
     image: "/projects/ci-framework.png",
-    githubUrl: "https://github.com/conner-morrison/ci-automation-framework",
+    githubUrl: "https://github.com/conner-morrison/cypress-realworld-app.git",
 
     tech: [
       "GitHub Actions",
@@ -102,7 +102,7 @@ export const projects: Project[] = [
     result:
       "Scaled to 10,000+ users.",
     image: "/projects/workflow-saas.png",
-    githubUrl: "https://github.com/conner-morrison/b2b-workflow-saas",
+    githubUrl: "https://github.com/conner-morrison/refine.git",
 
     tech: [
       "Next.js",
@@ -127,7 +127,7 @@ export const projects: Project[] = [
     result:
       "40% improvement in development velocity.",
     image: "/projects/crm-modernization.png",
-    githubUrl: "https://github.com/conner-morrison/crm-modernization-platform",
+    githubUrl: "https://github.com/conner-morrison/next-shadcn-admin-dashboard.git",
 
     tech: [
       "Next.js",
@@ -152,7 +152,7 @@ export const projects: Project[] = [
     result:
       "35% improved load time.",
     image: "/projects/multi-tenant-saas.png",
-    githubUrl: "https://github.com/conner-morrison/nextwave-saas-platform",
+    githubUrl: "https://github.com/conner-morrison/next-shadcn-dashboard-starter.git",
 
     tech: [
       "Next.js 14",

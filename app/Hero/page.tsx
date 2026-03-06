@@ -39,16 +39,8 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
             className="font-serif text-5xl sm:text-6xl font-semibold tracking-tight text-[var(--foreground)] mt-1"
           >
-            Welcome to Portfolio
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-3 text-lg text-[var(--muted)] leading-relaxed max-w-md mx-auto"
-          >
             Conner Morrison
-          </motion.p>
+          </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -75,7 +67,7 @@ export default function Hero() {
             className="mt-10 flex flex-wrap justify-center gap-4"
           >
             <Link
-              href="/about"
+              href="#about"
               className="inline-flex items-center justify-center min-w-[140px] px-6 py-3.5 rounded-xl bg-[var(--accent)] text-white text-sm font-semibold shadow-lg shadow-[var(--accent)]/25 hover:opacity-90 transition-all duration-200"
             >
               About Me

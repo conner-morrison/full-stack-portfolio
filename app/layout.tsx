@@ -10,6 +10,7 @@ import { PageTransition } from "@/components/page-transition";
 import { BackgroundGrid } from "@/components/background-grid";
 import { NoiseOverlay } from "@/components/noise-overlay";
 import { Spotlight } from "@/components/spotlight";
+import { ScrollToHash } from "@/app/components/scroll-to-hash";
 
 export default function RootLayout({
   children,
@@ -20,14 +21,15 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="min-h-screen bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300 antialiased">
+      <body className="min-h-screen text-[var(--foreground)] transition-colors duration-300 antialiased">
         <ThemeProvider attribute="class" defaultTheme="system">
+          <ScrollToHash />
           <BackgroundGrid />
           <NoiseOverlay />
           <Spotlight />
           <div className="min-h-screen flex flex-col">
             <Header onOpenCommand={() => setOpen(true)} />
-            <main className="flex-1 w-full max-w-5xl mx-auto px-6 sm:px-8 py-12 sm:py-16">
+            <main className="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-10 sm:py-12 md:py-16 lg:py-20">
               <PageTransition>{children}</PageTransition>
             </main>
             <Footer />

@@ -8,8 +8,8 @@ import { useEffect, useState } from "react";
 
 const navItems = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/projects", label: "Projects" },
+  { href: "/#about", label: "About" },
+  { href: "/#projects", label: "Projects" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -26,10 +26,10 @@ export function Header({ onOpenCommand }: { onOpenCommand: () => void }) {
 
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--background)]/95 backdrop-blur-sm">
-      <div className="max-w-5xl mx-auto px-6 sm:px-8 py-4 flex justify-between items-center">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-3 sm:py-4 flex justify-between items-center gap-2">
         <Link
           href="/"
-          className="flex items-center gap-3 font-serif text-lg font-semibold text-[var(--foreground)] tracking-tight hover:opacity-80 transition-opacity"
+          className="flex items-center gap-2 sm:gap-3 font-serif text-base sm:text-lg font-semibold text-[var(--foreground)] tracking-tight hover:opacity-80 transition-opacity min-w-0"
         >
           <span
             className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[var(--accent)] to-[var(--accent)]/70 text-white text-xs font-bold shadow-sm ring-2 ring-[var(--border)]"
@@ -39,15 +39,19 @@ export function Header({ onOpenCommand }: { onOpenCommand: () => void }) {
           </span>
           Conner Morrison
         </Link>
-        <nav className="flex items-center gap-1" role="navigation">
+        <nav className="flex items-center gap-0.5 sm:gap-1 flex-shrink-0" role="navigation">
           {navItems.map(({ href, label }) => {
             const isActive =
-              href === "/" ? pathname === "/" : pathname.startsWith(href);
+              href === "/"
+                ? pathname === "/"
+                : href.startsWith("/#")
+                  ? false
+                  : pathname.startsWith(href);
             return (
               <Link
                 key={href}
                 href={href}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
+                className={`px-2 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors duration-200 whitespace-nowrap ${
                   isActive
                     ? "bg-[var(--accent-soft)] text-[var(--accent)]"
                     : "text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--muted-bg)]"

@@ -45,17 +45,74 @@
   }
 }
 
+/* Class-based dark mode (next-themes toggle) */
+.dark,
+html.dark {
+  --background: #0c0a09;
+  --foreground: #fafaf9;
+  --muted: #a8a29e;
+  --muted-bg: #1c1917;
+  --border: #292524;
+  --accent: #3b82f6;
+  --accent-soft: #1e3a5f;
+  --card: #171615;
+  --card-border: #292524;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.2);
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.2), 0 2px 4px -2px rgb(0 0 0 / 0.15);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.2), 0 4px 6px -4px rgb(0 0 0 / 0.15);
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
   color: var(--foreground);
   font-family: 'Source Sans 3', ui-sans-serif, system-ui, sans-serif;
   font-feature-settings: "ss01", "ss02", "cv02", "cv03", "cv04", "cv11";
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background 0.4s ease, color 0.3s ease;
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* Professional gradient background — light mode */
+body {
+  background: linear-gradient(
+    172deg,
+    #b8c4d4 0%,
+    #a8b8cc 18%,
+    #e8e4dc 42%,
+    #ddd6cc 65%,
+    #c4baae 85%,
+    #b0a498 100%
+  );
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(
+      172deg,
+      #1e3a5f 0%,
+      #0f172a 20%,
+      #0c0a09 40%,
+      #1a1a2e 60%,
+      #0c0a09 80%,
+      #020617 100%
+    );
+  }
+}
+
+.dark body,
+html.dark body {
+  background: linear-gradient(
+    172deg,
+    #1e3a5f 0%,
+    #0f172a 20%,
+    #0c0a09 40%,
+    #1a1a2e 60%,
+    #0c0a09 80%,
+    #020617 100%
+  );
 }
 
 .font-serif {
