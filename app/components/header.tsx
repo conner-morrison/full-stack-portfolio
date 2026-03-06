@@ -17,7 +17,7 @@ export function Header({ onOpenCommand }: { onOpenCommand: () => void }) {
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const [activeSection, setActiveSection] = useState<string | null>(null);
+  const [activeSection, setActiveSection] = useState<string>("home");
 
   useEffect(() => {
     setMounted(true);
@@ -30,22 +30,26 @@ export function Header({ onOpenCommand }: { onOpenCommand: () => void }) {
     const updateActive = () => {
       const sectionIds = ["about", "projects", "contact"];
       const elements = sectionIds.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+      const activationOffset = 180;
+
+      if (elements.length === 0) return;
+
       if (window.scrollY < 150) {
-        setActiveSection(null);
+        setActiveSection("home");
         return;
       }
-      if (elements.length === 0) return;
-      let current: string | null = null;
-      let minTop = Infinity;
+
+      let current = elements[0]?.id ?? "home";
+
       for (const el of elements) {
-        const rect = el.getBoundingClientRect();
-        if (rect.top <= window.innerHeight * 0.4 && rect.top > -rect.height * 0.5) {
-          if (rect.top < minTop) {
-            minTop = rect.top;
-            current = el.id;
-          }
+        const sectionTop = el.offsetTop;
+        if (window.scrollY + activationOffset >= sectionTop) {
+          current = el.id;
+        } else {
+          break;
         }
       }
+
       setActiveSection(current);
     };
 
@@ -80,7 +84,7 @@ export function Header({ onOpenCommand }: { onOpenCommand: () => void }) {
                   ? false
                   : pathname.startsWith("/" + (section ?? ""))
                 : section === null
-                  ? activeSection === null
+                  ? activeSection === "home"
                   : activeSection === section;
             return (
               <Link
