@@ -67,14 +67,14 @@ export default function Hero() {
           >
             <Link
               href="/about"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-[var(--accent)] text-white font-medium text-sm shadow-lg shadow-[var(--accent)]/25 hover:opacity-90 transition-opacity"
+              className="inline-flex items-center justify-center min-w-[140px] px-6 py-3.5 rounded-xl bg-[var(--accent)] text-white text-sm font-semibold shadow-lg shadow-[var(--accent)]/25 hover:opacity-90 transition-all duration-200"
             >
               About Me
             </Link>
             <a
               href="/Conner_Morrison_Resume.pdf"
               download
-              className="inline-flex items-center justify-center px-6 py-3 rounded-xl border-2 border-[var(--border)] bg-[var(--card)] text-[var(--foreground)] font-medium text-sm hover:bg-[var(--muted-bg)] transition-colors"
+              className="inline-flex items-center justify-center min-w-[140px] px-6 py-3.5 rounded-xl bg-[var(--accent)] text-white text-sm font-semibold shadow-lg shadow-[var(--accent)]/25 hover:opacity-90 transition-all duration-200"
             >
               Download Resume
             </a>

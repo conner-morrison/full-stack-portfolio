@@ -106,44 +106,33 @@ export default function AboutPage() {
         <h2 className="font-serif text-2xl font-semibold text-[var(--foreground)]">
           Education
         </h2>
-        <div className="p-6 sm:p-8 rounded-2xl border border-[var(--card-border)] bg-[var(--card)] shadow-[var(--shadow)]">
-          <h3 className="font-semibold text-[var(--foreground)]">
-            Bachelor of Science in Computer Science
-          </h3>
-          <p className="mt-2 text-[var(--muted)]">
-            Focus: Software Engineering, Distributed Systems, Algorithms, and
-            Computer Architecture
-          </p>
-          <p className="mt-2 text-sm text-[var(--muted)] opacity-90">
-            Emphasis on scalable system design, data structures, software
-            architecture, and modern application development.
-          </p>
-        </div>
-      </section>
-
-      {/* Contact */}
-      <section className="space-y-6">
-        <h2 className="font-serif text-2xl font-semibold text-[var(--foreground)]">
-          Get in touch
-        </h2>
-        <div className="flex flex-wrap gap-x-8 gap-y-2 text-[var(--muted)]">
-          <span>
-            <strong className="text-[var(--foreground)]">Location:</strong> 1049
-            NW 178th St, Shoreline, WA 98177-3827
-          </span>
-          <span>
-            <strong className="text-[var(--foreground)]">Email:</strong>{" "}
-            <a
-              href="mailto:morrisonconner638@gmail.com"
-              className="text-[var(--accent)] hover:underline"
-            >
-              morrisonconner638@gmail.com
-            </a>
-          </span>
-          <span>
-            <strong className="text-[var(--foreground)]">Phone:</strong> (206)
-            318-0677
-          </span>
+        <div className="space-y-6">
+          <div className="p-6 sm:p-8 rounded-2xl border border-[var(--card-border)] bg-[var(--card)] shadow-[var(--shadow)]">
+            <h3 className="font-semibold text-[var(--foreground)]">
+              Master of Science (M.S.) in Computer Science
+            </h3>
+            <p className="mt-1 text-[var(--muted)]">
+              University of California, Irvine · 2014 – 2016
+            </p>
+            <p className="mt-2 text-[var(--muted)]">GPA: 3.8</p>
+            <p className="mt-2 text-sm text-[var(--muted)] italic">
+              Thesis: Scalable Web Application Architecture for Distributed Systems
+            </p>
+          </div>
+          <div className="p-6 sm:p-8 rounded-2xl border border-[var(--card-border)] bg-[var(--card)] shadow-[var(--shadow)]">
+            <h3 className="font-semibold text-[var(--foreground)]">
+              Bachelor of Science (B.S.) in Computer Science
+            </h3>
+            <p className="mt-1 text-[var(--muted)]">
+              University of Washington · 2010 – 2014
+            </p>
+            <p className="mt-2 text-[var(--muted)]">GPA: 3.6</p>
+            <p className="mt-2 text-sm text-[var(--muted)] opacity-90">
+              Focus: Software Engineering, Distributed Systems, Algorithms, and
+              Computer Architecture. Emphasis on scalable system design, data
+              structures, and modern application development.
+            </p>
+          </div>
         </div>
       </section>
     </div>
