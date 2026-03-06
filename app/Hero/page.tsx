@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
@@ -66,12 +65,6 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="mt-10 flex flex-wrap justify-center gap-4"
           >
-            <Link
-              href="#about"
-              className="inline-flex items-center justify-center min-w-[140px] px-6 py-3.5 rounded-xl bg-[var(--accent)] text-white text-sm font-semibold shadow-lg shadow-[var(--accent)]/25 hover:opacity-90 transition-all duration-200"
-            >
-              About Me
-            </Link>
             <a
               href="/Conner_Morrison_Resume.pdf"
               download

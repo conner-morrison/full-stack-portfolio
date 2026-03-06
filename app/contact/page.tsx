@@ -16,7 +16,10 @@ type ContactSectionProps = { variant?: "page" | "section" };
 export default function ContactPage({ variant = "page" }: ContactSectionProps) {
   const isSection = variant === "section";
   return (
-    <div className="max-w-5xl mx-auto px-6 sm:px-8 py-16 sm:py-24 space-y-16">
+    <section
+      id={isSection ? "contact" : undefined}
+      className={isSection ? "scroll-mt-20 max-w-5xl mx-auto px-6 sm:px-8 py-16 sm:py-24 space-y-16" : "max-w-5xl mx-auto px-6 sm:px-8 py-16 sm:py-24 space-y-16"}
+    >
       <div className="space-y-4">
         <h1 className={`font-serif font-semibold tracking-tight text-[var(--foreground)] ${isSection ? "text-3xl sm:text-4xl" : "text-4xl sm:text-5xl"}`}>
           {isSection ? "Get in touch" : "Contact me"}
@@ -158,6 +161,6 @@ export default function ContactPage({ variant = "page" }: ContactSectionProps) {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

@@ -44,13 +44,13 @@ export function CommandPalette({
           <Command.Item onSelect={() => navigate("/")}>
             Home
           </Command.Item>
-          <Command.Item onSelect={() => navigate("/about")}>
+          <Command.Item onSelect={() => navigate("/#about")}>
             About
           </Command.Item>
-          <Command.Item onSelect={() => navigate("/projects")}>
+          <Command.Item onSelect={() => navigate("/#projects")}>
             Projects
           </Command.Item>
-          <Command.Item onSelect={() => navigate("/contact")}>
+          <Command.Item onSelect={() => navigate("/#contact")}>
             Contact
           </Command.Item>
         </Command.List>

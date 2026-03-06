@@ -75,6 +75,23 @@ export function ProjectsSection() {
                   <p className="text-[var(--muted)] text-sm sm:text-base leading-relaxed max-w-2xl">
                     {project.overview}
                   </p>
+                  {project.tech && project.tech.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-1">
+                      {project.tech.slice(0, 5).map((t) => (
+                        <span
+                          key={t}
+                          className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md bg-[var(--muted-bg)] text-[var(--muted)] text-xs font-medium border border-[var(--border)]"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                      {project.tech.length > 5 && (
+                        <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md bg-[var(--muted-bg)]/80 text-[var(--muted)] text-xs font-medium">
+                          +{project.tech.length - 5}
+                        </span>
+                      )}
+                    </div>
+                  )}
                   <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-[var(--accent)] group-hover:gap-2.5 transition-all duration-300">
                     View project
                     <span className="inline-block group-hover:translate-x-0.5 transition-transform">→</span>

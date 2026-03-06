@@ -8,12 +8,14 @@ const ABOUT_IMAGE_DARK = "/dev/dark/ilya-pavlov-OqtafYT5kTw-unsplash.jpg";
 export function AboutSection() {
   return (
     <section id="about" className="scroll-mt-20 w-full py-12 sm:py-16 md:py-20 lg:py-24 space-y-16 sm:space-y-20">
-      {/* Hero */}
+      {/* Heading on its own row to avoid overlap with image, kept on one line */}
+      <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-[var(--foreground)] whitespace-nowrap">
+        About Conner Morrison
+      </h2>
+
+      {/* Intro row: text + image */}
       <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
         <div className="space-y-6 order-2 md:order-1">
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[var(--foreground)]">
-            About Conner Morrison
-          </h2>
           <p className="text-base sm:text-lg text-[var(--muted)] leading-relaxed">
             Engineering Manager and Senior Full-Stack Engineer specializing in
             scalable cloud platforms, enterprise architecture, and high-performance
