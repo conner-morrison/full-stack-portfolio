@@ -8,34 +8,32 @@ const ABOUT_IMAGE_DARK = "/dev/dark/ilya-pavlov-OqtafYT5kTw-unsplash.jpg";
 export function AboutSection() {
   return (
     <section id="about" className="scroll-mt-20 w-full py-12 sm:py-16 md:py-20 lg:py-24 space-y-16 sm:space-y-20">
-      {/* Heading on its own row to avoid overlap with image, kept on one line */}
+      {/* Heading on its own row, kept on one line */}
       <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-[var(--foreground)] whitespace-nowrap">
         About Conner Morrison
       </h2>
 
-      {/* Intro row: text + image */}
-      <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-        <div className="space-y-6 order-2 md:order-1">
-          <p className="text-base sm:text-lg text-[var(--muted)] leading-relaxed">
-            Engineering Manager and Senior Full-Stack Engineer specializing in
-            scalable cloud platforms, enterprise architecture, and high-performance
-            SaaS systems.
-          </p>
-        </div>
-        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-[var(--card-border)] ring-1 ring-black/10 dark:ring-white/10 order-1 md:order-2 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.12),0_10px_20px_-5px_rgba(0,0,0,0.15),0_30px_60px_-15px_rgba(0,0,0,0.35)] dark:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.3),0_10px_20px_-5px_rgba(0,0,0,0.4),0_30px_60px_-15px_rgba(0,0,0,0.6)]">
+      {/* Intro: paragraph and photo on one line at every resolution, responsive sizing */}
+      <div className="flex flex-col sm:flex-row flex-nowrap items-stretch sm:items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10">
+        <p className="text-xs sm:text-sm md:text-base lg:text-lg text-[var(--muted)] leading-relaxed min-w-0 flex-1 basis-0 max-w-md sm:max-w-lg">
+          Engineering Manager and Senior Full-Stack Engineer specializing in
+          scalable cloud platforms, enterprise architecture, and high-performance
+          SaaS systems.
+        </p>
+        <div className="relative shrink-0 w-full max-w-[200px] sm:max-w-none sm:w-52 md:w-60 lg:w-72 xl:w-80 aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden border border-[var(--card-border)] ring-1 ring-black/10 dark:ring-white/10 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.12),0_10px_20px_-5px_rgba(0,0,0,0.15)] dark:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.3),0_10px_20px_-5px_rgba(0,0,0,0.4)]">
           <Image
             src={ABOUT_IMAGE_LIGHT}
             alt="Professional workspace"
             fill
             className="object-cover dark:hidden"
-            sizes="(max-width: 768px) 100vw, 50vw"
+            sizes="(max-width: 640px) 200px, (max-width: 768px) 208px, (max-width: 1024px) 240px, (max-width: 1280px) 288px, 320px"
           />
           <Image
             src={ABOUT_IMAGE_DARK}
             alt="Professional workspace"
             fill
             className="object-cover hidden dark:block"
-            sizes="(max-width: 768px) 100vw, 50vw"
+            sizes="(max-width: 640px) 200px, (max-width: 768px) 208px, (max-width: 1024px) 240px, (max-width: 1280px) 288px, 320px"
           />
         </div>
       </div>
@@ -100,6 +98,116 @@ export function AboutSection() {
               </p>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Professional Experience */}
+      <div className="space-y-8">
+        <h3 className="font-serif text-2xl font-semibold text-[var(--foreground)]">
+          Professional Experience
+        </h3>
+        <div className="space-y-6">
+          <div className="p-6 sm:p-8 rounded-2xl border border-[var(--card-border)] bg-[var(--card)] shadow-[var(--shadow)] space-y-4">
+            <div>
+              <h4 className="font-semibold text-[var(--foreground)]">
+                Senior Software Engineer
+              </h4>
+              <p className="text-sm text-[var(--muted)] mt-0.5">
+                NextWave Digital Systems · Seattle, WA · Jan 2024 – Present
+              </p>
+            </div>
+            <ul className="space-y-2 text-sm text-[var(--muted)] leading-relaxed list-disc list-inside marker:text-[var(--accent)]">
+              <li>Architected SaaS platform using Next.js (App Router) + TypeScript with SSR and structured feature-based architecture.</li>
+              <li>Implemented reusable UI component system using Shadcn UI + Tailwind CSS.</li>
+              <li>Enforced coding standards including naming conventions, folder structure, ESLint and Prettier integration.</li>
+              <li>Designed and maintained Dockerized environments for development and production parity.</li>
+              <li>Built CI/CD pipelines using GitHub Actions for automated linting, testing, and deployment.</li>
+              <li>Led team of 5–6 engineers, conducting code reviews and architectural discussions.</li>
+            </ul>
+          </div>
+
+          <div className="p-6 sm:p-8 rounded-2xl border border-[var(--card-border)] bg-[var(--card)] shadow-[var(--shadow)] space-y-4">
+            <div>
+              <h4 className="font-semibold text-[var(--foreground)]">
+                Technical Consultant
+              </h4>
+              <p className="text-sm text-[var(--muted)] mt-0.5">
+                Stratus Consulting Group · New York, NY · Jan 2022 – Dec 2023
+              </p>
+            </div>
+            <ul className="space-y-2 text-sm text-[var(--muted)] leading-relaxed list-disc list-inside marker:text-[var(--accent)]">
+              <li>Advised enterprise clients on React + TypeScript modernization strategies.</li>
+              <li>Designed scalable frontend systems using Next.js (Pages Router era).</li>
+              <li>Assisted clients in Docker adoption and CI/CD workflow implementation.</li>
+              <li>Improved maintainability through modular refactoring and documentation standardization.</li>
+            </ul>
+          </div>
+
+          <div className="p-6 sm:p-8 rounded-2xl border border-[var(--card-border)] bg-[var(--card)] shadow-[var(--shadow)] space-y-4">
+            <div>
+              <h4 className="font-semibold text-[var(--foreground)]">
+                Full-Stack Engineer
+              </h4>
+              <p className="text-sm text-[var(--muted)] mt-0.5">
+                Innovexa Labs · San Francisco, CA · Apr 2020 – Mar 2023
+              </p>
+            </div>
+            <ul className="space-y-2 text-sm text-[var(--muted)] leading-relaxed list-disc list-inside marker:text-[var(--accent)]">
+              <li>Developed production applications using React, Next.js (Pages Router), and TypeScript.</li>
+              <li>Built backend APIs using Node.js and FastAPI.</li>
+              <li>Implemented SSR using traditional Next.js data fetching methods.</li>
+              <li>Containerized services and deployed to AWS (EC2, RDS, S3).</li>
+              <li>Designed reusable UI components and improved frontend performance.</li>
+            </ul>
+          </div>
+
+          <div className="p-6 sm:p-8 rounded-2xl border border-[var(--card-border)] bg-[var(--card)] shadow-[var(--shadow)] space-y-4">
+            <div>
+              <h4 className="font-semibold text-[var(--foreground)]">
+                Quality Assurance Engineer
+              </h4>
+              <p className="text-sm text-[var(--muted)] mt-0.5">
+                BrightPath Technologies · Austin, TX · Apr 2018 – Mar 2020
+              </p>
+            </div>
+            <ul className="space-y-2 text-sm text-[var(--muted)] leading-relaxed list-disc list-inside marker:text-[var(--accent)]">
+              <li>Developed automated test suites using Selenium and Jest.</li>
+              <li>Integrated regression testing into Jenkins-based CI pipelines.</li>
+              <li>Improved system stability and deployment confidence.</li>
+            </ul>
+          </div>
+
+          <div className="p-6 sm:p-8 rounded-2xl border border-[var(--card-border)] bg-[var(--card)] shadow-[var(--shadow)] space-y-4">
+            <div>
+              <h4 className="font-semibold text-[var(--foreground)]">
+                Software Engineer
+              </h4>
+              <p className="text-sm text-[var(--muted)] mt-0.5">
+                Nihon Systems Innovation Co., Ltd. · Osaka, Japan · Apr 2017 – Mar 2018
+              </p>
+            </div>
+            <ul className="space-y-2 text-sm text-[var(--muted)] leading-relaxed list-disc list-inside marker:text-[var(--accent)]">
+              <li>Developed backend services using Java (Spring Boot).</li>
+              <li>Designed REST APIs and optimized database performance.</li>
+              <li>Collaborated within enterprise Agile teams.</li>
+            </ul>
+          </div>
+
+          <div className="p-6 sm:p-8 rounded-2xl border border-[var(--card-border)] bg-[var(--card)] shadow-[var(--shadow)] space-y-4">
+            <div>
+              <h4 className="font-semibold text-[var(--foreground)]">
+                Software Developer
+              </h4>
+              <p className="text-sm text-[var(--muted)] mt-0.5">
+                Sakura Digital Solutions · Tokyo, Japan · Apr 2016 – Mar 2017
+              </p>
+            </div>
+            <ul className="space-y-2 text-sm text-[var(--muted)] leading-relaxed list-disc list-inside marker:text-[var(--accent)]">
+              <li>Maintained enterprise Java applications and relational databases.</li>
+              <li>Developed frontend features using JavaScript.</li>
+              <li>Supported debugging and production issue resolution.</li>
+            </ul>
+          </div>
         </div>
       </div>
 
