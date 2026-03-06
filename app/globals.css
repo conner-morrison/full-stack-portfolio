@@ -88,7 +88,7 @@ body {
   );
   background-size: 100% 120%;
   background-position: 50% 0%;
-  animation: bg-drift-light 11s ease-in-out infinite alternate;
+  animation: bg-drift-light 8s ease-in-out infinite alternate;
 }
 
 @keyframes bg-drift-light {

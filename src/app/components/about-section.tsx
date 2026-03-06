@@ -20,7 +20,7 @@ export function AboutSection() {
           scalable cloud platforms, enterprise architecture, and high-performance
           SaaS systems.
         </p>
-        <div className="relative shrink-0 w-full max-w-[240px] sm:max-w-none sm:w-60 md:w-72 lg:w-80 xl:w-96 aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden border border-[var(--card-border)] ring-1 ring-black/10 dark:ring-white/10 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.12),0_10px_20px_-5px_rgba(0,0,0,0.15)] dark:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.3),0_10px_20px_-5px_rgba(0,0,0,0.4)]">
+        <div className="relative shrink-0 w-full max-w-[240px] sm:max-w-none sm:w-60 md:w-72 lg:w-80 xl:w-96 aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden border border-[var(--card-border)] ring-1 ring-black/10 dark:ring-white/10 shadow-[0_12px_32px_-10px_rgba(15,23,42,0.28),0_28px_70px_-24px_rgba(15,23,42,0.24)] dark:shadow-[0_12px_32px_-10px_rgba(0,0,0,0.5),0_28px_70px_-24px_rgba(0,0,0,0.6)]">
           <Image
             src={ABOUT_IMAGE_LIGHT}
             alt="Professional workspace"
