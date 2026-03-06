@@ -4,9 +4,16 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import { Parallax } from "@/components/parallax";
+import { useEffect, useState } from "react";
 
 const HERO_LIGHT = "/dev/light/lauren-mancke-aOC7TSLb1o8-unsplash.jpg";
 const HERO_DARK = "/dev/dark/ales-nesetril-Im7lZjxeLhg-unsplash.jpg";
+
+const TAGLINE = "I build scalable SaaS systems and lead high-performing engineering teams.";
+const TYPE_SPEED_MS = 55;
+const DELETE_SPEED_MS = 35;
+const PAUSE_AFTER_TYPE_MS = 2200;
+const PAUSE_AFTER_DELETE_MS = 800;
 
 const easeOut = [0.16, 1, 0.3, 1] as const;
 const container = {
@@ -35,9 +42,35 @@ const cta = {
     transition: { duration: 0.7, delay: 0.35, ease: easeOut },
   },
 };
+const lineWipe = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.2 },
+  },
+};
 
 export default function Hero() {
   const { resolvedTheme } = useTheme();
+  const [taglineLength, setTaglineLength] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    if (!isDeleting && taglineLength === TAGLINE.length) {
+      const t = setTimeout(() => setIsDeleting(true), PAUSE_AFTER_TYPE_MS);
+      return () => clearTimeout(t);
+    }
+    if (isDeleting && taglineLength === 0) {
+      const t = setTimeout(() => setIsDeleting(false), PAUSE_AFTER_DELETE_MS);
+      return () => clearTimeout(t);
+    }
+    const delay = isDeleting ? DELETE_SPEED_MS : TYPE_SPEED_MS;
+    const t = setTimeout(
+      () => setTaglineLength((n) => (isDeleting ? Math.max(0, n - 1) : Math.min(TAGLINE.length, n + 1))),
+      delay
+    );
+    return () => clearTimeout(t);
+  }, [taglineLength, isDeleting]);
 
   return (
     <Parallax speed={30}>
@@ -80,10 +113,10 @@ export default function Hero() {
             </motion.p>
 
             <motion.p
-              variants={line}
-              className="mt-6 text-lg text-[var(--muted)] leading-relaxed max-w-xl mx-auto"
+              variants={lineWipe}
+              className="mt-6 text-lg text-[var(--muted)] leading-relaxed max-w-xl mx-auto min-h-[2.75rem] flex flex-wrap justify-center items-center"
             >
-              I build scalable SaaS systems and lead high-performing engineering teams.
+              {TAGLINE.slice(0, taglineLength)}
             </motion.p>
 
             <motion.div
