@@ -78,60 +78,59 @@ body {
 /* Professional gradient background — light mode */
 body {
   background: linear-gradient(
-    172deg,
-    #b8c4d4 0%,
-    #a8b8cc 18%,
-    #e8e4dc 42%,
-    #ddd6cc 65%,
-    #c4baae 85%,
-    #b0a498 100%
+    160deg,
+    #eef4fb 0%,
+    #dce8f5 18%,
+    #e8edf2 42%,
+    #ddd8d0 70%,
+    #d2cabf 100%
   );
-  background-size: 100% 120%;
+  background-size: 140% 140%;
   background-position: 50% 0%;
-  animation: bg-drift-light 4s ease-in-out infinite alternate;
+  animation: bg-drift-light 18s ease-in-out infinite alternate;
 }
 
 @keyframes bg-drift-light {
   0% { background-position: 50% 0%; }
-  100% { background-position: 50% 5%; }
+  50% { background-position: 47% 6%; }
+  100% { background-position: 53% 10%; }
 }
 
 @media (prefers-color-scheme: dark) {
   body {
     background: linear-gradient(
-      172deg,
-      #1e3a5f 0%,
-      #0f172a 20%,
-      #0c0a09 40%,
-      #1a1a2e 60%,
-      #0c0a09 80%,
-      #020617 100%
+      160deg,
+      #07111f 0%,
+      #0d1b2d 20%,
+      #101827 44%,
+      #131c30 72%,
+      #070b14 100%
     );
-    background-size: 100% 120%;
+    background-size: 140% 140%;
     background-position: 50% 0%;
-    animation: bg-drift-dark 12s ease-in-out infinite alternate;
+    animation: bg-drift-dark 20s ease-in-out infinite alternate;
   }
 }
 
 @keyframes bg-drift-dark {
   0% { background-position: 50% 0%; }
-  100% { background-position: 50% 4%; }
+  50% { background-position: 48% 5%; }
+  100% { background-position: 52% 9%; }
 }
 
 .dark body,
 html.dark body {
   background: linear-gradient(
-    172deg,
-    #1e3a5f 0%,
-    #0f172a 20%,
-    #0c0a09 40%,
-    #1a1a2e 60%,
-    #0c0a09 80%,
-    #020617 100%
+    160deg,
+    #07111f 0%,
+    #0d1b2d 20%,
+    #101827 44%,
+    #131c30 72%,
+    #070b14 100%
   );
-  background-size: 100% 120%;
+  background-size: 140% 140%;
   background-position: 50% 0%;
-  animation: bg-drift-dark 12s ease-in-out infinite alternate;
+  animation: bg-drift-dark 20s ease-in-out infinite alternate;
 }
 
 .font-serif {

@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Moon, Sun } from "lucide-react";
+import { Grid3X3, Moon, Sparkles, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import type { BackgroundMode } from "@/app/layout";
 
 const navItems = [
   { href: "/", label: "Home", section: null as string | null },
@@ -13,7 +14,15 @@ const navItems = [
   { href: "/#contact", label: "Contact", section: "contact" },
 ];
 
-export function Header({ onOpenCommand }: { onOpenCommand: () => void }) {
+export function Header({
+  onOpenCommand,
+  backgroundMode,
+  onToggleBackgroundMode,
+}: {
+  onOpenCommand: () => void;
+  backgroundMode: BackgroundMode;
+  onToggleBackgroundMode: () => void;
+}) {
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -102,6 +111,21 @@ export function Header({ onOpenCommand }: { onOpenCommand: () => void }) {
           })}
         </nav>
         <div className="flex items-center gap-2">
+          <button
+            onClick={onToggleBackgroundMode}
+            className="inline-flex items-center gap-2 h-10 px-3 rounded-xl border-2 border-[var(--border)] bg-[var(--muted-bg)] text-[var(--foreground)] hover:border-[var(--accent)] hover:bg-[var(--accent-soft)] hover:text-[var(--accent)] transition-all duration-200 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+            aria-label={`Switch background animation mode. Current mode: ${backgroundMode}`}
+            title={`Background mode: ${backgroundMode === "aurora" ? "Aurora" : "Grid"}`}
+          >
+            {backgroundMode === "aurora" ? (
+              <Sparkles size={16} strokeWidth={2} />
+            ) : (
+              <Grid3X3 size={16} strokeWidth={2} />
+            )}
+            <span className="hidden sm:inline text-xs font-semibold">
+              {backgroundMode === "aurora" ? "Aurora" : "Grid"}
+            </span>
+          </button>
           <button
             onClick={() => setTheme(isDark ? "light" : "dark")}
             className="flex items-center justify-center h-10 w-10 rounded-xl border-2 border-[var(--border)] bg-[var(--muted-bg)] text-[var(--foreground)] hover:border-[var(--accent)] hover:bg-[var(--accent-soft)] hover:text-[var(--accent)] transition-all duration-200 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
