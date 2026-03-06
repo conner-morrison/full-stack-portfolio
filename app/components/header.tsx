@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -18,7 +17,6 @@ export function Header({ onOpenCommand }: { onOpenCommand: () => void }) {
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const [avatarError, setAvatarError] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -33,20 +31,11 @@ export function Header({ onOpenCommand }: { onOpenCommand: () => void }) {
           href="/"
           className="flex items-center gap-2 sm:gap-3 font-serif text-base sm:text-lg font-semibold text-[var(--foreground)] tracking-tight hover:opacity-80 transition-opacity min-w-0"
         >
-          <span className="relative flex h-9 w-9 shrink-0 overflow-hidden rounded-full shadow-sm ring-2 ring-[var(--border)] items-center justify-center bg-gradient-to-br from-[var(--accent)] to-[var(--accent)]/70 text-white text-xs font-bold" aria-hidden>
-            {avatarError ? (
-              "CM"
-            ) : (
-              <Image
-                src="/conner/avatar.jpg"
-                alt=""
-                fill
-                className="object-cover"
-                sizes="36px"
-                priority
-                onError={() => setAvatarError(true)}
-              />
-            )}
+          <span
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[var(--accent)] to-[var(--accent)]/70 text-white text-xs font-bold shadow-sm ring-2 ring-[var(--border)]"
+            aria-hidden
+          >
+            CM
           </span>
           Conner Morrison
         </Link>

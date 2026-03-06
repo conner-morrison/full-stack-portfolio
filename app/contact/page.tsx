@@ -33,6 +33,16 @@ export default function ContactPage({ variant = "page" }: ContactSectionProps) {
     setShorelineDirection(1);
     setShorelineIndex((i) => Math.min(maxShorelineStart, i + 1));
   };
+
+  const galleryInitial =
+    shorelineDirection === 0
+      ? { opacity: 0, x: 0 }
+      : { opacity: 0, x: shorelineDirection > 0 ? -24 : 24 };
+  const galleryExit =
+    shorelineDirection === 0
+      ? { opacity: 0, x: 0 }
+      : { opacity: 0, x: shorelineDirection > 0 ? 24 : -24 };
+
   return (
     <section
       id={isSection ? "contact" : undefined}
@@ -176,19 +186,12 @@ export default function ContactPage({ variant = "page" }: ContactSectionProps) {
             <ChevronLeft size={24} strokeWidth={2} />
           </button>
           <div className="grid grid-cols-3 gap-px w-full min-h-0 relative">
-            <AnimatePresence mode="wait" initial={false} custom={shorelineDirection}>
+            <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={shorelineIndex}
-                custom={shorelineDirection}
-                initial={(dir) => ({
-                  opacity: 0,
-                  x: typeof dir === "number" && dir !== 0 ? (dir > 0 ? -24 : 24) : 0,
-                })}
+                initial={galleryInitial}
                 animate={{ opacity: 1, x: 0 }}
-                exit={(dir) => ({
-                  opacity: 0,
-                  x: typeof dir === "number" && dir !== 0 ? (dir > 0 ? 24 : -24) : 0,
-                })}
+                exit={galleryExit}
                 transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
                 className="col-span-3 grid grid-cols-3 gap-px w-full"
               >
