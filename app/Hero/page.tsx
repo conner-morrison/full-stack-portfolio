@@ -32,20 +32,29 @@ export default function Hero() {
         </div>
 
         <div className="relative max-w-3xl mx-auto px-6 sm:px-8 text-center">
+          
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="font-serif text-5xl sm:text-6xl font-semibold tracking-tight text-[var(--foreground)]"
+            transition={{ duration: 0.6, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+            className="font-serif text-5xl sm:text-6xl font-semibold tracking-tight text-[var(--foreground)] mt-1"
+          >
+            Welcome to Portfolio
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-3 text-lg text-[var(--muted)] leading-relaxed max-w-md mx-auto"
           >
             Conner Morrison
-          </motion.h1>
+          </motion.p>
 
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-4 text-xl text-[var(--muted)] font-medium"
+            transition={{ duration: 0.6, delay: 0.24, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-5 text-xl text-[var(--muted)] font-medium"
           >
             Engineering Manager & Software Architect
           </motion.p>
@@ -62,7 +71,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="mt-10 flex flex-wrap justify-center gap-4"
           >
             <Link
