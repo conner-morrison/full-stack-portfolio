@@ -8,6 +8,34 @@ import { Parallax } from "@/components/parallax";
 const HERO_LIGHT = "/dev/light/lauren-mancke-aOC7TSLb1o8-unsplash.jpg";
 const HERO_DARK = "/dev/dark/ales-nesetril-Im7lZjxeLhg-unsplash.jpg";
 
+const easeOut = [0.16, 1, 0.3, 1] as const;
+const container = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1,
+    },
+  },
+};
+const line = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: easeOut },
+  },
+};
+const cta = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, delay: 0.35, ease: easeOut },
+  },
+};
+
 export default function Hero() {
   const { resolvedTheme } = useTheme();
 
@@ -31,47 +59,45 @@ export default function Hero() {
         </div>
 
         <div className="relative max-w-3xl mx-auto px-6 sm:px-8 text-center">
-          
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-            className="font-serif text-5xl sm:text-6xl font-semibold tracking-tight text-[var(--foreground)] mt-1"
-          >
-            Conner Morrison
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.24, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-5 text-xl text-[var(--muted)] font-medium"
-          >
-            Engineering Manager & Software Architect
-          </motion.p>
-
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-6 text-lg text-[var(--muted)] leading-relaxed max-w-xl mx-auto"
-          >
-            I build scalable SaaS systems and lead high-performing engineering teams.
-          </motion.p>
-
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-10 flex flex-wrap justify-center gap-4"
+            variants={container}
+            initial="hidden"
+            animate="visible"
+            className="space-y-0"
           >
-            <a
-              href="/Conner_Morrison_Resume.pdf"
-              download
-              className="inline-flex items-center justify-center min-w-[140px] px-6 py-3.5 rounded-xl bg-[var(--accent)] text-white text-sm font-semibold shadow-lg shadow-[var(--accent)]/25 hover:opacity-90 transition-all duration-200"
+            <motion.h1
+              variants={line}
+              className="font-serif text-5xl sm:text-6xl font-semibold tracking-tight text-[var(--foreground)] mt-1"
             >
-              Download Resume
-            </a>
+              Conner Morrison
+            </motion.h1>
+
+            <motion.p
+              variants={line}
+              className="mt-5 text-xl text-[var(--muted)] font-medium"
+            >
+              Engineering Manager & Software Architect
+            </motion.p>
+
+            <motion.p
+              variants={line}
+              className="mt-6 text-lg text-[var(--muted)] leading-relaxed max-w-xl mx-auto"
+            >
+              I build scalable SaaS systems and lead high-performing engineering teams.
+            </motion.p>
+
+            <motion.div
+              variants={cta}
+              className="mt-10 flex flex-wrap justify-center gap-4"
+            >
+              <a
+                href="/Conner_Morrison_Resume.pdf"
+                download
+                className="inline-flex items-center justify-center min-w-[140px] px-6 py-3.5 rounded-xl bg-[var(--accent)] text-white text-sm font-semibold shadow-lg shadow-[var(--accent)]/25 hover:opacity-90 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+              >
+                Download Resume
+              </a>
+            </motion.div>
           </motion.div>
         </div>
       </section>

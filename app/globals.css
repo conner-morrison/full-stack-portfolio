@@ -86,6 +86,14 @@ body {
     #c4baae 85%,
     #b0a498 100%
   );
+  background-size: 100% 120%;
+  background-position: 50% 0%;
+  animation: bg-drift-light 45s ease-in-out infinite alternate;
+}
+
+@keyframes bg-drift-light {
+  0% { background-position: 50% 0%; }
+  100% { background-position: 50% 5%; }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -99,7 +107,15 @@ body {
       #0c0a09 80%,
       #020617 100%
     );
+    background-size: 100% 120%;
+    background-position: 50% 0%;
+    animation: bg-drift-dark 50s ease-in-out infinite alternate;
   }
+}
+
+@keyframes bg-drift-dark {
+  0% { background-position: 50% 0%; }
+  100% { background-position: 50% 4%; }
 }
 
 .dark body,
@@ -113,6 +129,9 @@ html.dark body {
     #0c0a09 80%,
     #020617 100%
   );
+  background-size: 100% 120%;
+  background-position: 50% 0%;
+  animation: bg-drift-dark 50s ease-in-out infinite alternate;
 }
 
 .font-serif {

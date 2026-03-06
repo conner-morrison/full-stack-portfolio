@@ -19,14 +19,14 @@ export function BackgroundGrid() {
   return (
     <div className="fixed inset-0 -z-30 overflow-hidden pointer-events-none">
       <motion.div
-        initial={{ backgroundPosition: "0px 0px" }}
-        animate={{ backgroundPosition: "0px 100px" }}
+        initial={{ backgroundPosition: "50% 0%" }}
+        animate={{ backgroundPosition: "50% 60px" }}
         transition={{
-          duration: 20,
+          duration: 35,
           repeat: Infinity,
-          ease: "linear",
+          ease: [0.4, 0, 0.6, 1],
         }}
-        className="absolute inset-0 bg-[length:56px_56px]"
+        className="absolute inset-0 bg-[length:56px_56px] opacity-[0.97]"
         style={{
           backgroundImage: isDark ? gridDark : gridLight,
         }}
