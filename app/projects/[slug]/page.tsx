@@ -16,6 +16,13 @@ export default async function ProjectDetail({
 
   return (
     <div className="w-full max-w-5xl mx-auto py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24 space-y-8 sm:space-y-10 md:space-y-14 lg:space-y-16">
+      <Link
+        href="/#projects"
+        className="inline-flex items-center gap-2 text-sm font-medium text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+      >
+        <span aria-hidden>←</span>
+        Back to Projects
+      </Link>
       <Reveal>
         <div className="space-y-3 sm:space-y-4">
           <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[var(--foreground)]">

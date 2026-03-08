@@ -5,7 +5,7 @@ import { ProjectsSection } from "@/app/components/projects-section";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen w-full min-w-0" id="top">
       <Hero />
       <AboutSection />
       <ProjectsSection />

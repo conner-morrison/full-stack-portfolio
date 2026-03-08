@@ -26,18 +26,18 @@ const card = {
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="scroll-mt-20 w-full py-12 sm:py-16 md:py-20 lg:py-24 space-y-10 sm:space-y-12 md:space-y-16">
+    <section id="projects" className="scroll-mt-20 w-full min-w-0 py-[clamp(2rem,6vw,6rem)] space-y-[clamp(2rem,5vw,4rem)]">
       <div>
-        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[var(--foreground)]">
+        <h2 className="font-serif text-[clamp(1.875rem,5vw,3rem)] font-semibold tracking-tight text-[var(--foreground)]">
           Projects
         </h2>
-        <p className="mt-2 sm:mt-3 text-base sm:text-lg text-[var(--muted)] max-w-2xl">
+        <p className="mt-2 sm:mt-3 text-[clamp(0.875rem,2vw,1.125rem)] text-[var(--muted)] max-w-2xl">
           Selected work across enterprise SaaS, automation, and full-stack systems.
         </p>
       </div>
 
       <motion.div
-        className="space-y-8 sm:space-y-12 md:space-y-16"
+        className="space-y-[clamp(1.5rem,4vw,4rem)]"
         variants={container}
         initial="hidden"
         whileInView="show"
@@ -56,7 +56,7 @@ export function ProjectsSection() {
                   <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] via-transparent to-transparent" />
                 </div>
 
-                <div className="relative w-full h-52 sm:h-64 md:h-72 lg:h-80 overflow-hidden">
+                <div className="relative w-full min-w-0 h-52 sm:h-64 md:h-72 lg:h-80 overflow-hidden">
                   <motion.div
                     className="absolute inset-0"
                     whileHover={{ scale: 1.08 }}

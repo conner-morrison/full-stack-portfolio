@@ -46,13 +46,13 @@ export default function ContactPage({ variant = "page" }: ContactSectionProps) {
   return (
     <section
       id={isSection ? "contact" : undefined}
-      className={isSection ? "scroll-mt-20 max-w-5xl mx-auto px-6 sm:px-8 py-16 sm:py-24 space-y-16" : "max-w-5xl mx-auto px-6 sm:px-8 py-16 sm:py-24 space-y-16"}
+      className={isSection ? "scroll-mt-20 w-full min-w-0 max-w-[min(92vw,64rem)] mx-auto px-[clamp(1rem,4vw,2rem)] py-[clamp(3rem,8vw,6rem)] space-y-[clamp(3rem,6vw,4rem)]" : "max-w-[min(92vw,64rem)] mx-auto px-[clamp(1rem,4vw,2rem)] py-[clamp(3rem,8vw,6rem)] space-y-[clamp(3rem,6vw,4rem)] min-w-0"}
     >
       <div className="space-y-4">
-        <h1 className={`font-serif font-semibold tracking-tight text-[var(--foreground)] ${isSection ? "text-3xl sm:text-4xl" : "text-4xl sm:text-5xl"}`}>
+        <h1 className={`font-serif font-semibold tracking-tight text-[var(--foreground)] ${isSection ? "text-[clamp(1.5rem,4vw,2.25rem)] sm:text-[clamp(1.75rem,4vw,2.5rem)]" : "text-[clamp(1.75rem,4vw,2.5rem)] sm:text-[clamp(2rem,5vw,3rem)]"}`}>
           {isSection ? "Get in touch" : "Contact me"}
         </h1>
-        <p className="text-lg text-[var(--muted)] leading-relaxed max-w-2xl">
+        <p className="text-[clamp(0.9375rem,2vw,1.125rem)] text-[var(--muted)] leading-relaxed max-w-2xl">
           For engineering leadership opportunities, technical collaboration, or
           product discussions, feel free to reach out.
         </p>

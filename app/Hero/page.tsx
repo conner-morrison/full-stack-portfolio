@@ -70,7 +70,7 @@ export default function Hero() {
 
   return (
     <Parallax speed={30}>
-      <section className="relative min-h-[88vh] flex items-center justify-center overflow-hidden rounded-b-3xl">
+      <section className="relative min-h-[min(88vh,88dvh)] flex items-center justify-center overflow-hidden rounded-b-2xl sm:rounded-b-3xl w-full min-w-0">
         {/* Editorial spotlight hero background */}
         <div className="absolute inset-0 -z-10">
           <div
@@ -107,7 +107,7 @@ export default function Hero() {
           />
         </div>
 
-        <div className="relative max-w-3xl mx-auto px-6 sm:px-8 text-center">
+        <div className="relative w-full max-w-[min(48rem,92vw)] mx-auto px-[clamp(1rem,4vw,2rem)] text-center min-w-0">
           <motion.div
             variants={container}
             initial="hidden"
@@ -116,33 +116,33 @@ export default function Hero() {
           >
             <motion.h1
               variants={line}
-              className="font-serif text-5xl sm:text-6xl font-semibold tracking-tight text-[var(--foreground)] mt-1"
+              className="font-serif text-[clamp(2.25rem,8vw,3.75rem)] font-semibold tracking-tight text-[var(--foreground)] mt-1"
             >
               Conner Morrison
             </motion.h1>
 
             <motion.p
               variants={line}
-              className="mt-5 text-xl text-[var(--muted)] font-medium"
+              className="mt-[clamp(1rem,3vw,1.25rem)] text-[clamp(1rem,2.5vw,1.25rem)] text-[var(--muted)] font-medium"
             >
               Engineering Manager & Software Architect
             </motion.p>
 
             <motion.p
               variants={lineWipe}
-              className="mt-6 text-lg text-[var(--muted)] leading-relaxed max-w-xl mx-auto min-h-[2.75rem] flex flex-wrap justify-center items-center"
+              className="mt-[clamp(1rem,3vw,1.5rem)] text-[clamp(0.9375rem,2vw,1.125rem)] text-[var(--muted)] leading-relaxed max-w-xl mx-auto min-h-[2.75rem] flex flex-wrap justify-center items-center"
             >
               {TAGLINE.slice(0, taglineLength)}
             </motion.p>
 
             <motion.div
               variants={cta}
-              className="mt-10 flex flex-wrap justify-center gap-4"
+              className="mt-[clamp(2rem,4vw,2.5rem)] flex flex-wrap justify-center gap-3 sm:gap-4"
             >
               <a
                 href="/Conner_Morrison_Resume.pdf"
                 download
-                className="inline-flex items-center justify-center min-w-[140px] px-6 py-3.5 rounded-xl bg-[var(--accent)] text-white text-sm font-semibold shadow-lg shadow-[var(--accent)]/25 hover:opacity-90 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                className="inline-flex items-center justify-center min-w-[120px] sm:min-w-[140px] px-4 sm:px-6 py-3 sm:py-3.5 rounded-xl bg-[var(--accent)] text-white text-[13px] sm:text-sm font-semibold shadow-lg shadow-[var(--accent)]/25 hover:opacity-90 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
               >
                 Download Resume
               </a>

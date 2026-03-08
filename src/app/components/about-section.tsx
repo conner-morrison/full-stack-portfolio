@@ -6,20 +6,19 @@ const ABOUT_IMAGE = "/conner/conner.png";
 
 export function AboutSection() {
   return (
-    <section id="about" className="scroll-mt-20 w-full py-12 sm:py-16 md:py-20 lg:py-24 space-y-16 sm:space-y-20">
-      {/* Heading on its own row, kept on one line */}
-      <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-[var(--foreground)] whitespace-nowrap">
+    <section id="about" className="scroll-mt-20 w-full min-w-0 py-[clamp(2rem,6vw,6rem)] space-y-[clamp(3rem,8vw,5rem)]">
+      <h2 className="font-serif text-[clamp(1.5rem,5vw,3rem)] sm:text-[clamp(1.75rem,5vw,3rem)] md:text-[clamp(2rem,5vw,3.5rem)] lg:text-[clamp(2.25rem,5vw,3rem)] font-semibold tracking-tight text-[var(--foreground)]">
         About Me
       </h2>
 
       {/* Intro: paragraph and photo on one line at every resolution, responsive sizing */}
-      <div className="flex flex-col sm:flex-row flex-nowrap items-stretch sm:items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10">
-        <p className="text-xs sm:text-sm md:text-base lg:text-lg text-[var(--muted)] leading-relaxed min-w-0 flex-1 basis-0 max-w-md sm:max-w-lg">
+      <div className="flex flex-col sm:flex-row flex-nowrap items-stretch sm:items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 min-w-0">
+        <p className="text-[clamp(0.75rem,2vw,1rem)] sm:text-sm md:text-base lg:text-lg text-[var(--muted)] leading-relaxed min-w-0 flex-1 basis-0 max-w-md sm:max-w-lg">
           Engineering Manager and Senior Full-Stack Engineer specializing in
           scalable cloud platforms, enterprise architecture, and high-performance
           SaaS systems.
         </p>
-        <div className="relative shrink-0 w-full max-w-[240px] sm:max-w-none sm:w-60 md:w-72 lg:w-80 xl:w-96 aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden border border-[var(--card-border)] ring-1 ring-black/10 dark:ring-white/10 shadow-[0_12px_32px_-10px_rgba(15,23,42,0.28),0_28px_70px_-24px_rgba(15,23,42,0.24)] dark:shadow-[0_12px_32px_-10px_rgba(0,0,0,0.5),0_28px_70px_-24px_rgba(0,0,0,0.6)]">
+        <div className="relative shrink-0 w-full max-w-[240px] sm:max-w-none sm:w-60 md:w-72 lg:w-80 xl:w-96 aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden border border-[var(--card-border)] ring-1 ring-black/10 dark:ring-white/10 shadow-[0_12px_32px_-10px_rgba(15,23,42,0.28),0_28px_70px_-24px_rgba(15,23,42,0.24)] dark:shadow-[0_12px_32px_-10px_rgba(0,0,0,0.5),0_28px_70px_-24px_rgba(0,0,0,0.6)] min-w-0">
           <Image
             src={ABOUT_IMAGE}
             alt="Conner Morrison"
