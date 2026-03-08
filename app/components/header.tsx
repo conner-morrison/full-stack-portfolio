@@ -2,10 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Grid3X3, Moon, Sparkles, Sun } from "lucide-react";
+import { Moon, MoreVertical, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
-import type { BackgroundMode } from "@/app/types";
+import { useEffect, useRef, useState } from "react";
 
 const navItems = [
   { href: "/#top", label: "Home", section: null as string | null },
@@ -14,23 +13,55 @@ const navItems = [
   { href: "/#contact", label: "Contact", section: "contact" },
 ];
 
-export function Header({
-  onOpenCommand,
-  backgroundMode,
-  onToggleBackgroundMode,
-}: {
-  onOpenCommand: () => void;
-  backgroundMode: BackgroundMode;
-  onToggleBackgroundMode: () => void;
-}) {
+function handleNavClick(
+  e: React.MouseEvent<HTMLAnchorElement>,
+  href: string,
+  label: string,
+  section: string | null,
+  pathname: string
+) {
+  const isHome = (href === "/" || href === "/#top") && label === "Home";
+  const isSectionLink = section !== null;
+  if (isHome && pathname === "/" && !window.location.hash) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    return;
+  }
+  if (pathname === "/" && isSectionLink) {
+    const id = href.split("#")[1];
+    if (id) {
+      const el = document.getElementById(id);
+      if (el) {
+        e.preventDefault();
+        window.history.replaceState(null, "", href);
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  }
+}
+
+export function Header({ onOpenCommand }: { onOpenCommand: () => void }) {
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("home");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onOutside = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener("click", onOutside);
+    return () => document.removeEventListener("click", onOutside);
+  }, [menuOpen]);
 
   // Scroll-spy: update active nav item based on which section is in view (home page only)
   useEffect(() => {
@@ -85,7 +116,7 @@ export function Header({
           </span>
           <span className="truncate">Conner Morrison</span>
         </Link>
-        <nav className="flex items-center gap-0.5 sm:gap-1 flex-shrink-0 flex-wrap justify-end" role="navigation">
+        <nav className="hidden md:flex items-center gap-0.5 sm:gap-1 flex-shrink-0 flex-wrap justify-end" role="navigation">
           {navItems.map(({ href, label, section }) => {
             const isActive =
               pathname !== "/"
@@ -131,21 +162,57 @@ export function Header({
           })}
         </nav>
         <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
-          <button
-            onClick={onToggleBackgroundMode}
-            className="inline-flex items-center gap-2 min-h-[2.75rem] sm:min-h-10 px-3 sm:px-3 rounded-xl border-2 border-[var(--border)] bg-[var(--muted-bg)] text-[var(--foreground)] hover:border-[var(--accent)] hover:bg-[var(--accent-soft)] hover:text-[var(--accent)] transition-all duration-200 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
-            aria-label={`Switch background animation mode. Current mode: ${backgroundMode}`}
-            title={`Background mode: ${backgroundMode === "aurora" ? "Aurora" : "Grid"}`}
-          >
-            {backgroundMode === "aurora" ? (
-              <Sparkles size={16} strokeWidth={2} />
-            ) : (
-              <Grid3X3 size={16} strokeWidth={2} />
+          {/* Three-dot menu (small screens) — right before theme toggle */}
+          <div className="relative md:hidden flex-shrink-0" ref={menuRef}>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setMenuOpen((o) => !o);
+              }}
+              className="flex items-center justify-center min-h-[2.75rem] min-w-[2.75rem] rounded-xl border-2 border-[var(--border)] bg-[var(--muted-bg)] text-[var(--foreground)] hover:border-[var(--accent)] hover:bg-[var(--accent-soft)] hover:text-[var(--accent)] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+              aria-label="Open navigation menu"
+              aria-expanded={menuOpen}
+              aria-haspopup="true"
+            >
+              <MoreVertical size={22} strokeWidth={2} />
+            </button>
+            {menuOpen && (
+              <div
+                className="absolute right-0 top-full mt-1.5 py-1.5 min-w-[10rem] rounded-xl border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-lg)] z-50"
+                role="menu"
+              >
+                {navItems.map(({ href, label, section }) => {
+                  const isActive =
+                    pathname !== "/"
+                      ? href === "/" || href === "/#top"
+                        ? false
+                        : pathname.startsWith("/" + (section ?? ""))
+                      : section === null
+                        ? activeSection === "home"
+                        : activeSection === section;
+                  return (
+                    <Link
+                      key={href}
+                      href={href}
+                      role="menuitem"
+                      onClick={(e) => {
+                        handleNavClick(e, href, label, section, pathname);
+                        setMenuOpen(false);
+                      }}
+                      className={`block w-full px-4 py-3 text-left text-sm font-medium transition-colors ${
+                        isActive
+                          ? "bg-[var(--accent-soft)] text-[var(--accent)]"
+                          : "text-[var(--muted)] hover:bg-[var(--muted-bg)] hover:text-[var(--foreground)]"
+                      }`}
+                    >
+                      {label}
+                    </Link>
+                  );
+                })}
+              </div>
             )}
-            <span className="hidden sm:inline text-xs font-semibold">
-              {backgroundMode === "aurora" ? "Aurora" : "Grid"}
-            </span>
-          </button>
+          </div>
           <button
             onClick={() => setTheme(isDark ? "light" : "dark")}
             className="flex items-center justify-center min-h-[2.75rem] min-w-[2.75rem] sm:min-h-10 sm:min-w-10 rounded-xl border-2 border-[var(--border)] bg-[var(--muted-bg)] text-[var(--foreground)] hover:border-[var(--accent)] hover:bg-[var(--accent-soft)] hover:text-[var(--accent)] transition-all duration-200 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
