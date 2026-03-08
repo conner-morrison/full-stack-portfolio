@@ -99,10 +99,10 @@ function NetworkCluster({
       preserveAspectRatio="none"
       className={className}
       animate={{
-        opacity: svgOpacity,
-        x: floatX,
-        y: floatY,
-        scale: floatScale,
+        opacity: [...svgOpacity],
+        x: [...floatX],
+        y: [...floatY],
+        scale: [...floatScale],
       }}
       transition={{
         duration,
@@ -120,7 +120,7 @@ function NetworkCluster({
         </filter>
       </defs>
       <motion.g
-        animate={{ opacity: lineOpacity }}
+        animate={{ opacity: [...lineOpacity] }}
         transition={{
           duration: lineDuration,
           repeat: Infinity,

@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { Grid3X3, Moon, Sparkles, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import type { BackgroundMode } from "@/app/layout";
+import type { BackgroundMode } from "@/app/types";
 
 const navItems = [
   { href: "/", label: "Home", section: null as string | null },

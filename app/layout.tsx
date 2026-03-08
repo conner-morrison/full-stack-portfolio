@@ -3,6 +3,7 @@
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { ReactNode, useEffect, useState } from "react";
+import type { BackgroundMode } from "@/app/types";
 import { CommandPalette } from "@/components/command-palette";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -12,8 +13,6 @@ import { BackgroundGrid } from "@/components/background-grid";
 import { NoiseOverlay } from "@/components/noise-overlay";
 import { ParticleNetwork } from "@/components/particle-network";
 import { ScrollToHash } from "@/app/components/scroll-to-hash";
-
-export type BackgroundMode = "aurora" | "grid";
 
 export default function RootLayout({
   children,
