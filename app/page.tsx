@@ -1,7 +1,17 @@
+import dynamic from "next/dynamic";
 import Hero from "./Hero/page";
-import ContactSection from "./contact/page";
-import { AboutSection } from "@/app/components/about-section";
-import { ProjectsSection } from "@/app/components/projects-section";
+
+const AboutSection = dynamic(
+  () => import("@/app/components/about-section").then((m) => m.AboutSection),
+  { ssr: true }
+);
+
+const ProjectsSection = dynamic(
+  () => import("@/app/components/projects-section").then((m) => m.ProjectsSection),
+  { ssr: true }
+);
+
+const ContactSection = dynamic(() => import("./contact/page"), { ssr: true });
 
 export default function HomePage() {
   return (

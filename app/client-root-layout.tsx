@@ -1,8 +1,8 @@
 "use client";
 
 import { ReactNode, useState } from "react";
+import dynamic from "next/dynamic";
 import { ThemeProvider } from "next-themes";
-import { CommandPalette } from "@/components/command-palette";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { PageTransition } from "@/components/page-transition";
@@ -10,6 +10,11 @@ import { AuroraMesh } from "@/components/aurora-mesh";
 import { NoiseOverlay } from "@/components/noise-overlay";
 import { ParticleNetwork } from "@/components/particle-network";
 import { ScrollToHash } from "@/app/components/scroll-to-hash";
+
+const CommandPalette = dynamic(
+  () => import("@/components/command-palette").then((m) => m.CommandPalette),
+  { ssr: false }
+);
 
 export function ClientRootLayout({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
