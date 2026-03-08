@@ -2,13 +2,10 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useTheme } from "next-themes";
 import { Parallax } from "@/components/parallax";
 import { useEffect, useState } from "react";
 
-const HERO_LIGHT = "/dev/light/lauren-mancke-aOC7TSLb1o8-unsplash.jpg";
-const HERO_DARK = "/dev/dark/ales-nesetril-Im7lZjxeLhg-unsplash.jpg";
-
+const HERO_TEXTURE = "/dev/light/lauren-mancke-aOC7TSLb1o8-unsplash.jpg";
 const TAGLINE = "I build scalable SaaS systems and lead high-performing engineering teams.";
 const TYPE_SPEED_MS = 55;
 const DELETE_SPEED_MS = 35;
@@ -74,26 +71,38 @@ export default function Hero() {
   return (
     <Parallax speed={30}>
       <section className="relative min-h-[88vh] flex items-center justify-center overflow-hidden rounded-b-3xl">
-        {/* Background image - theme-aware via CSS so correct image shows before hydration */}
+        {/* Editorial spotlight hero background */}
         <div className="absolute inset-0 -z-10">
-          <Image
-            src={HERO_LIGHT}
-            alt=""
-            fill
-            className="object-cover dark:opacity-0 dark:pointer-events-none"
-            priority
-            sizes="100vw"
-          />
-          <Image
-            src={HERO_DARK}
-            alt=""
-            fill
-            className="object-cover opacity-0 dark:opacity-100 dark:pointer-events-auto"
-            priority
-            sizes="100vw"
+          <div
+            className="absolute left-1/2 top-1/2 h-[60%] w-[88%] max-w-4xl -translate-x-1/2 -translate-y-1/2 rounded-[2.5rem] border border-white/40 bg-[linear-gradient(180deg,rgba(255,255,255,0.78)_0%,rgba(242,245,249,0.72)_42%,rgba(230,233,238,0.64)_100%)] shadow-[0_26px_90px_-42px_rgba(15,23,42,0.26)] dark:border-white/8 dark:bg-[linear-gradient(180deg,rgba(5,10,20,0.96)_0%,rgba(8,14,26,0.94)_42%,rgba(6,12,22,0.96)_100%)] dark:shadow-[0_26px_90px_-42px_rgba(0,0,0,0.6)]"
+            aria-hidden
           />
           <div
-            className="absolute inset-0 bg-gradient-to-b from-[var(--background)]/85 via-[var(--background)]/50 to-[var(--background)]"
+            className="absolute left-1/2 top-1/2 h-[60%] w-[88%] max-w-4xl -translate-x-1/2 -translate-y-1/2 rounded-[2.5rem] bg-[radial-gradient(ellipse_at_50%_18%,rgba(255,255,255,0.68)_0%,rgba(255,255,255,0.24)_28%,transparent_58%),radial-gradient(circle_at_18%_78%,rgba(59,130,246,0.12)_0%,transparent_26%),radial-gradient(circle_at_84%_24%,rgba(14,165,233,0.1)_0%,transparent_22%)] dark:bg-[radial-gradient(ellipse_at_50%_18%,rgba(255,255,255,0.02)_0%,transparent_28%,transparent_58%),radial-gradient(circle_at_18%_78%,rgba(59,130,246,0.08)_0%,transparent_26%),radial-gradient(circle_at_84%_24%,rgba(14,165,233,0.06)_0%,transparent_22%)]"
+            aria-hidden
+          />
+          <div
+            className="absolute left-1/2 top-1/2 h-[60%] w-[88%] max-w-4xl -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[2.5rem]"
+            aria-hidden
+          >
+            <Image
+              src={HERO_TEXTURE}
+              alt=""
+              fill
+              priority
+              sizes="(max-width: 1024px) 88vw, 896px"
+              className="object-cover scale-[1.04] opacity-[0.28] saturate-[0.8] contrast-[0.96] dark:opacity-[0.48] dark:saturate-[0.6] dark:brightness-[0.55] dark:contrast-[1.05]"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.28),rgba(255,255,255,0.08)_38%,rgba(226,232,240,0.12)_100%)] dark:bg-[linear-gradient(180deg,rgba(2,6,18,0.62),rgba(4,10,24,0.48)_38%,rgba(2,6,18,0.58)_100%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(255,255,255,0.46)_0%,transparent_36%),radial-gradient(circle_at_22%_80%,rgba(59,130,246,0.08)_0%,transparent_24%)] dark:bg-[radial-gradient(circle_at_50%_18%,rgba(4,10,22,0.45)_0%,transparent_50%),radial-gradient(circle_at_22%_80%,rgba(37,99,235,0.08)_0%,transparent_24%),radial-gradient(circle_at_82%_22%,rgba(8,47,73,0.1)_0%,transparent_26%)]" />
+            <div className="absolute inset-0 dark:bg-[linear-gradient(135deg,rgba(6,12,28,0.35),transparent_32%,rgba(3,8,20,0.4)_100%)]" />
+            <div className="absolute left-[12%] top-[16%] h-[180%] w-[18%] -translate-y-1/2 rotate-[22deg] bg-[linear-gradient(180deg,rgba(255,255,255,0.46),transparent_55%)] dark:bg-[linear-gradient(180deg,rgba(148,163,184,0.08),transparent_55%)]" />
+            <div className="absolute right-[10%] top-[8%] h-px w-[24%] bg-[linear-gradient(90deg,transparent,rgba(148,163,184,0.5),transparent)] dark:bg-[linear-gradient(90deg,transparent,rgba(148,163,184,0.24),transparent)]" />
+            <div className="absolute left-[50%] top-[20%] h-[46%] w-px -translate-x-1/2 bg-[linear-gradient(180deg,rgba(148,163,184,0.32),transparent)] dark:bg-[linear-gradient(180deg,rgba(148,163,184,0.18),transparent)]" />
+            <div className="absolute inset-x-[12%] bottom-[14%] h-px bg-[linear-gradient(90deg,transparent,rgba(148,163,184,0.22),transparent)] dark:bg-[linear-gradient(90deg,transparent,rgba(148,163,184,0.14),transparent)]" />
+          </div>
+          <div
+            className="absolute left-1/2 top-1/2 h-[60%] w-[88%] max-w-4xl -translate-x-1/2 -translate-y-1/2 rounded-[2.5rem] ring-1 ring-black/5 dark:ring-white/5"
             aria-hidden
           />
         </div>
