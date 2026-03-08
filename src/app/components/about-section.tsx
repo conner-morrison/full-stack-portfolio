@@ -9,7 +9,7 @@ export function AboutSection() {
     <section id="about" className="scroll-mt-20 w-full py-12 sm:py-16 md:py-20 lg:py-24 space-y-16 sm:space-y-20">
       {/* Heading on its own row, kept on one line */}
       <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-[var(--foreground)] whitespace-nowrap">
-        About Conner Morrison
+        About Me
       </h2>
 
       {/* Intro: paragraph and photo on one line at every resolution, responsive sizing */}
@@ -37,17 +37,17 @@ export function AboutSection() {
         </h3>
         <div className="space-y-4 text-[var(--muted)] leading-relaxed text-base sm:text-lg">
           <p>
-            I am a technology leader with extensive experience designing and
+            A technology leader with extensive experience designing and
             delivering enterprise-grade software platforms across SaaS systems,
             internal tooling, and automation frameworks.
           </p>
           <p>
-            My work focuses on building scalable distributed systems, modernizing
+            Focus on building scalable distributed systems, modernizing
             enterprise platforms, and improving developer productivity through
             engineering automation.
           </p>
           <p>
-            I combine hands-on engineering expertise with leadership experience
+            Combining hands-on engineering expertise with leadership experience
             to guide architecture decisions, mentor engineers, and deliver
             high-impact software products.
           </p>
