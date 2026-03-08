@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
+const EXCLUDED_PROJECT_SLUGS = ["crm-modernization", "multi-tenant-saas-platform"];
+
 const container = {
   hidden: { opacity: 0 },
   show: {
@@ -41,7 +43,9 @@ export function ProjectsSection() {
         whileInView="show"
         viewport={{ once: true, margin: "-80px" }}
       >
-        {projects.map((project) => (
+        {projects
+          .filter((p) => !EXCLUDED_PROJECT_SLUGS.includes(p.slug))
+          .map((project) => (
           <motion.div key={project.slug} variants={card}>
             <Link href={`/projects/${project.slug}`} className="block group">
               <article

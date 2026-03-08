@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 
-const ABOUT_IMAGE_LIGHT = "/dev/light/jeff-sheldon-9dI3g8owHiI-unsplash.jpg";
-const ABOUT_IMAGE_DARK = "/dev/dark/ilya-pavlov-OqtafYT5kTw-unsplash.jpg";
+const ABOUT_IMAGE = "/conner/conner.png";
 
 export function AboutSection() {
   return (
@@ -22,17 +21,10 @@ export function AboutSection() {
         </p>
         <div className="relative shrink-0 w-full max-w-[240px] sm:max-w-none sm:w-60 md:w-72 lg:w-80 xl:w-96 aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden border border-[var(--card-border)] ring-1 ring-black/10 dark:ring-white/10 shadow-[0_12px_32px_-10px_rgba(15,23,42,0.28),0_28px_70px_-24px_rgba(15,23,42,0.24)] dark:shadow-[0_12px_32px_-10px_rgba(0,0,0,0.5),0_28px_70px_-24px_rgba(0,0,0,0.6)]">
           <Image
-            src={ABOUT_IMAGE_LIGHT}
-            alt="Professional workspace"
+            src={ABOUT_IMAGE}
+            alt="Conner Morrison"
             fill
-            className="object-cover dark:hidden"
-            sizes="(max-width: 640px) 240px, (max-width: 768px) 240px, (max-width: 1024px) 288px, (max-width: 1280px) 320px, 384px"
-          />
-          <Image
-            src={ABOUT_IMAGE_DARK}
-            alt="Professional workspace"
-            fill
-            className="object-cover hidden dark:block"
+            className="object-cover"
             sizes="(max-width: 640px) 240px, (max-width: 768px) 240px, (max-width: 1024px) 288px, (max-width: 1280px) 320px, 384px"
           />
         </div>
