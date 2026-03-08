@@ -20,7 +20,7 @@ export function ClientRootLayout({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="system">
+    <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
       <ScrollToHash />
       <AuroraMesh />
       <ParticleNetwork />

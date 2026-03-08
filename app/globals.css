@@ -33,22 +33,10 @@
   --font-mono: var(--font-geist-mono, ui-monospace, monospace);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0c0a09;
-    --foreground: #fafaf9;
-    --muted: #d6d3d1;
-    --muted-bg: #1c1917;
-    --border: #292524;
-    --accent: #3b82f6;
-    --accent-soft: #1e3a5f;
-    --card: #171615;
-    --card-border: #292524;
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.2);
-    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.2), 0 2px 4px -2px rgb(0 0 0 / 0.15);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.2), 0 4px 6px -4px rgb(0 0 0 / 0.15);
-  }
-}
+/* Dark mode is controlled only by .dark class (next-themes). We do NOT use
+   @media (prefers-color-scheme: dark) so the header toggle can override
+   system preference — otherwise on system-dark devices the site would stay
+   dark even after the user chooses light. */
 
 /* Class-based dark mode (next-themes toggle) */
 .dark,
@@ -103,22 +91,6 @@ body {
   0% { background-position: 50% 0%; }
   50% { background-position: 47% 6%; }
   100% { background-position: 53% 10%; }
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background: linear-gradient(
-      160deg,
-      #07111f 0%,
-      #0d1b2d 20%,
-      #101827 44%,
-      #131c30 72%,
-      #070b14 100%
-    );
-    background-size: 140% 140%;
-    background-position: 50% 0%;
-    animation: bg-drift-dark 20s ease-in-out infinite alternate;
-  }
 }
 
 @keyframes bg-drift-dark {
